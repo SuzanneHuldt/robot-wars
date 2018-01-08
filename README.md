@@ -13,11 +13,11 @@ The choice of project was motivated primarily by the technical challenge involve
 
 
 ## Setup
-Given our goals for the project (pushing ourselves technically, and learning about machine learning and artificial intelligence, our choice of implementation was governed by two central considerations:
+Given our goals for the project (pushing ourselves technically and learning about machine learning and artificial intelligence) our choice of implementation was governed by two central considerations:
   1. Providing an appropriately challenging project to both consolidate and stretch the knowledge and skills acquired during the Makers Academy course. In particular, to ensure that the project involves writing a good deal of code (as opposed to simply connecting existing technologies and libraries).
   2. Finding a suitable way to assess the performance of our project as a bot, rather than code that merely passes tests.
 
-As such, we have chosen to tackle [X PUZZLE] from [Riddles.io](https://www.riddles.io/). This website provides puzzles that satisfy all of our requirements: the games are sufficiently challenging, the website is popular meaning there are lots of other bots to benchmark against, and the website provides some starter bots, allowing us to take inspiration for our code from bots written in other languages. We chose the [X PUZZLE] because...
+As such, we have chosen to tackle [X PUZZLE] from [Riddles.io](https://www.riddles.io/). This website provides puzzles that satisfy all of our requirements: the games are sufficiently challenging, the website is popular meaning there are lots of other bots to benchmark against, and the website provides some starter bots, allowing us to take inspiration for our code from bots written in other languages. It also gave us the advantage of playing a pre-created game, meaning we would be able to dedicate our energies to developing our bot, rather than building and visualising a game and game board. We chose the [X PUZZLE] because...
 
 
 ## Approach
