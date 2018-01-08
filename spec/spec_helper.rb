@@ -1,6 +1,8 @@
 require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
+require './lib/bot.rb'
+
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
