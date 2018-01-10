@@ -1,12 +1,13 @@
+require 'action.rb'
+require 'state.rb'
+
 class Bot
   attr_reader :line, :action, :state
 
   def initialize
-    #these arrays exist only for test purposes
-    @action = []
-    @state = []
+    @action = Action.new
+    @state = State.new
   end
-
 
   def receive_string
     @input_string = gets.chomp
@@ -16,15 +17,12 @@ class Bot
     print @input_string
   end
 
-  def update_state(formatted_string)
-    #these arrays only exist so that we can test the consider
-    #the tests must be rewritten to test implementation when we
-    #link up with your state class and when we write action class
-    case 
+  def update(formatted_string)
+    case
     when action_test(formatted_string)
-      @action << formatted_string
+      @action.update(formatted_string)
     else
-      @state << formatted_string
+      @state.update(formatted_string)
     end
   end
 
