@@ -8,4 +8,8 @@ class Player
     @last_move = last_move
   end
 
+  def update_living_cells(number_of_cells)
+    @living_cells = number_of_cells
+  end
+
 end
