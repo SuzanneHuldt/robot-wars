@@ -7,6 +7,8 @@ class State
 
   def update_info(args)
     return handle_game(args) if args[0] == 'game'
+    return assign_your_bot(args) if args[0] == 'your_bot'
+    return handle_player(args) if args[0].include?('player')
     @info[args[0].to_sym] = args[1].to_i
   end
 
@@ -23,11 +25,24 @@ class State
     @info[:field] << arg.slice!(0...@info[:field_width]).chars
     handle_field(arg)
   end
+
+  def assign_your_bot(args)
+    @info[args[0].to_sym] = args[1]
+  end
+
+  def handle_player(args)
+    return update_living_cells(args) if args[1] == 'living_cells'
+  end
+
+  def update_living_cells(args)
+    @info[:my_living_cells] = args[2].to_i if args[0] == @info[:your_bot]
+    
+  end
 end
 
 
 =begin
- 
+
  settings:
   timebank t
   time_per_move t
