@@ -22,4 +22,10 @@ describe Player do
       expect(player.update_living_cells(20)).to eq 20
     end
   end
+
+  describe '#update_last_move' do
+    it 'should update the last_move property' do
+      expect(player.update_last_move('pass')).to eq 'pass'
+    end
+  end
 end

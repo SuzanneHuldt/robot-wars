@@ -12,4 +12,8 @@ class Player
     @living_cells = number_of_cells
   end
 
+  def update_last_move(last_move)
+    @last_move = last_move
+  end
+
 end
