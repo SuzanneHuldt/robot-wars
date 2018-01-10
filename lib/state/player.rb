@@ -16,4 +16,8 @@ class Player
     @last_move = last_move
   end
 
+  def update_name(name)
+    @name = name
+  end
+
 end

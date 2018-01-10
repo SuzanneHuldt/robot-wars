@@ -28,4 +28,10 @@ describe Player do
       expect(player.update_last_move('pass')).to eq 'pass'
     end
   end
+
+  describe '#update_name' do
+    it 'should update the name property' do
+      expect(player.update_name('Marvin')).to eq 'Marvin'
+    end
+  end
 end
