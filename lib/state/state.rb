@@ -52,6 +52,7 @@ class State
 
   def update_player_names(args)
     @info[:me].update_name(args[1])
+    @info[:opponent].update_name(args[2])
   end
 end
 

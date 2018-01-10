@@ -70,6 +70,11 @@ describe State do
       subject.update_info(['player_names', 'player0', 'player1'])
       expect(subject.info[:me].name).to eq 'player0'
     end
+
+    it 'set\'s opponent\'s name' do
+      subject.update_info(['player_names', 'player0', 'player1'])
+      expect(subject.info[:opponent].name).to eq 'player1'
+    end
   end
 end
 
