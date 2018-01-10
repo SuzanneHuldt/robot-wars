@@ -2,6 +2,8 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 require './lib/bot.rb'
+require './lib/state.rb'
+require './lib/action.rb'
 
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
@@ -16,4 +18,5 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
 end
