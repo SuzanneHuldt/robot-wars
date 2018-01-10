@@ -7,13 +7,13 @@ end
 
 describe Bot do
   before do
-    $stdin = StringIO.new("Test String")
+    $stdin = StringIO.new('Test String')
   end
 
   after do
     $stdin = STDIN
   end
-
+  
   describe '#receive_string' do
     it 'receives and output a string' do
       expect(subject.receive_string).to eq("Test String")
