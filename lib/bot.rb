@@ -32,7 +32,7 @@ class Bot
     when action_test(formatted_string)
       @action.new_action(@formatter.action_format(formatted_string), @state.info )
     else
-      @state.update(formatted_string)
+      @state.update_info(formatted_string)
     end
   end
 

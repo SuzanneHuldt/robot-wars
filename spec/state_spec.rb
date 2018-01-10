@@ -1,5 +1,0 @@
-describe State do
-
-
-
-end
