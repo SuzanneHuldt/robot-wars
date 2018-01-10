@@ -30,7 +30,7 @@ class Bot
   def update(formatted_string)
     case
     when action_test(formatted_string)
-      @action.update(formatted_string)
+      @action.new_action(@formatter.action_format(formatted_string), @state.info )
     else
       @state.update(formatted_string)
     end

@@ -1,6 +1,6 @@
 class Action
 
-  def update(string)
-    true
+  def new_action(t, hash)
+    #t = time
   end
 end
