@@ -1,26 +1,13 @@
-require './lib/strategy.rb'
-
 class Bot
   def initialize
-    p 'Take me to your leader'
+    # @settings = {}
+  end
 
-    @game_settings = {
-      timebank: nil,
-      time_per_move: nil,
-      player_names: nil,
-      your_bot: nil,
-      your_botid: nil,
-      field_width: nil,
-      field_height: nil,
-      max_rounds: nil
-    }
+  def receive
+    @input_string = gets.chomp
+  end
 
-    @state = {
-      field: nil,
-      round: 0,
-      players: {}
-    }
-
-    @strategy = Strategy.new
+  def return_string
+    print @input_string
   end
 end
