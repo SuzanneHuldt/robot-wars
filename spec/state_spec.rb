@@ -51,7 +51,7 @@ describe State do
     it 'sets my_living_cells' do
       subject.update_info(['your_bot', 'player0'])
       subject.update_info(['player0', 'living_cells', '50'])
-      expect(subject.info[:my_living_cells]).to eq 50
+      expect(subject.info[:me].living_cells).to eq 50
     end
 
     it 'sets opponent_living_cells' do
