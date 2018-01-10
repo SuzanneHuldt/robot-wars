@@ -5,7 +5,6 @@ class ActionMock
   end
 end
 
-
 describe Bot do
   before do
     $stdin = StringIO.new("Test String")
@@ -25,15 +24,6 @@ describe Bot do
     it 'returns a string to the engine' do
       subject.receive_string
       expect{ subject.output_string }.to output("Test String").to_stdout
-    end
-  end
-
-
-
-  describe '#format string' do
-    it 'turns a line into an array of strings' do
-      subject.format_string('input line string')
-      expect(subject.line[0]).to eq('input')
     end
   end
 
