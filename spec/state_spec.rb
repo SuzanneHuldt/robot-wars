@@ -65,6 +65,11 @@ describe State do
       subject.update_info(['player1', 'move', 'pass'])
       expect(subject.info[:opponent].last_move).to eq 'pass'
     end
+
+    it 'set\'s your bot\'s name' do
+      subject.update_info(['player_names', 'player0', 'player1'])
+      expect(subject.info[:me].name).to eq 'player0'
+    end
   end
 end
 

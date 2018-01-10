@@ -38,6 +38,7 @@ class State
   def handle_player(args)
     return update_living_cells(args) if args[1] == 'living_cells'
     return update_last_move(args) if args[1] == 'move'
+    update_player_names(args)
   end
 
   def update_living_cells(args)
@@ -47,6 +48,10 @@ class State
 
   def update_last_move(args)
     @info[:opponent].update_last_move(args[2])
+  end
+
+  def update_player_names(args)
+    @info[:me].update_name(args[1])
   end
 end
 
