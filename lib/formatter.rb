@@ -6,6 +6,7 @@ class Formatter
   end
 
   def format_output(output_line)
+    # format from Action accordingly
     output_line
   end
 end
