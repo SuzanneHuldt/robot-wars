@@ -37,11 +37,16 @@ class State
 
   def handle_player(args)
     return update_living_cells(args) if args[1] == 'living_cells'
+    return update_last_move(args) if args[1] == 'move'
   end
 
   def update_living_cells(args)
     return @info[:me].update_living_cells(args[2].to_i) if args[0] == @info[:your_bot]
     @info[:opponent].update_living_cells(args[2].to_i)
+  end
+
+  def update_last_move(args)
+    @info[:opponent].update_last_move(args[2])
   end
 end
 

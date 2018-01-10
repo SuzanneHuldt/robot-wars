@@ -59,6 +59,12 @@ describe State do
       subject.update_info(['player1', 'living_cells', '50'])
       expect(subject.info[:opponent].living_cells).to eq 50
     end
+
+    it 'sets a player\'s last_move' do
+      subject.update_info(['your_bot', 'player0'])
+      subject.update_info(['player1', 'move', 'pass'])
+      expect(subject.info[:opponent].last_move).to eq 'pass'
+    end
   end
 end
 
