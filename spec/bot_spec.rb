@@ -16,7 +16,7 @@ describe Bot do
   describe '#return_string' do
     it 'should return a string to the engine' do
       subject.receive
-      expect { subject.return_string }.to output 'Test String'.to_stdout
+      expect { subject.return_string }.to output('Test String').to_stdout
     end
   end
 end
