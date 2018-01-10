@@ -41,7 +41,7 @@ class State
 
   def update_living_cells(args)
     return @info[:me].update_living_cells(args[2].to_i) if args[0] == @info[:your_bot]
-    @info[:opponent_living_cells] = args[2].to_i
+    @info[:opponent].update_living_cells(args[2].to_i)
   end
 end
 
