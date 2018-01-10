@@ -74,14 +74,30 @@ end
 
   game field .,.,.,1,.,0,.,.,.,.,.,0,.,1,.,.,1,.,.,.,.,.,.,.,0,.,.,1,1,.,.,.,1,1,.,.,0,.,.,.,0,.,.,0,1,0,1,.,.,.,1,.,.,.,1,.,.,.,.,1,.,0,.,.,1,.,0,.,1,.,1,1,.,1,.,1,.,.,0,1,.,0,.,0,.,0,.,.,.,1,1,.,.,.,.,0,.,.,1,.,.,.,.,.,0,.,0,1,0,.,.,.,.,.,.,1,.,1,0,.,1,0,.,.,.,.,.,0,.,.,.,.,.,.,1,.,.,.,.,.,1,.,0,1,0,1,.,0,.,.,.,.,.,0,.,.,.,.,.,.,1,.,.,.,.,.,1,0,.,1,0,.,0,.,.,.,.,.,.,1,0,1,.,1,.,.,.,.,.,0,.,.,1,.,.,.,.,0,0,.,.,.,1,.,1,.,1,.,0,1,.,.,0,.,0,.,0,0,.,0,.,1,.,0,.,.,1,.,0,.,.,.,.,0,.,.,.,0,.,.,.,0,1,0,1,.,.,1,.,.,.,1,.,.,0,0,.,.,.,0,0,.,.,1,.,.,.,.,.,.,.,0,.,.,0,.,1,.,.,.,.,.,1,.,0,.,.,.
   game round 0 [game, round, 0]
-
   player0 living_cells 50 [player0, living_cells, 50]
   player1 living_cells 50
-  player_names player0,player1
+  your_bot player0
+  update:
+
+
+
+  player_names player0,player1 [player_names, 'player0player1']
   playerx move m
 
 
-  your_bot player0
-  update:
+
+  state.info = {
+    timebank: 1000,
+    time_per_move: 100,
+    field_width: 18,
+    field_height: 16,
+    max_rounds: 100,
+    field: [['1', '.'], ['0','.']],
+    your_botid: 0,
+    round: 0,
+    your_bot: 'player0',
+    my_living_cells: 50,
+    opponent_living_cells: 50
+}
 
 =end
