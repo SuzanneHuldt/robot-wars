@@ -14,11 +14,13 @@ class Action
   end
 
   def generate_move(hash)
-    MOVES.sample
+    move = MOVES.sample
+    return move if move == 'pass'
+    return assign_kill_coordinates(hash) if move == 'kill'
     # code to generate a move
     # move = (GENERATED_MOVE)
     # return generate_move(hash) unless legal_move(move, hash)
-    # move
+    move
   end
 
   def export_move(move)
@@ -36,6 +38,11 @@ class Action
     # going to differ depending on move type
   end
 
+  private
+
+  def assign_kill_coordinates(hash)
+
+  end
 
 
 end
