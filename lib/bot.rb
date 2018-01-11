@@ -41,6 +41,6 @@ class Bot
   end
 
   def action_test(formatted_string)
-    formatted_string[0] == 'action'
+    formatted_string.shift == 'action'
   end
 end

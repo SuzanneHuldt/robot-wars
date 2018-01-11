@@ -7,7 +7,8 @@ describe Bot do
       expect(subject.update(['action', 'move', '2'])).to be true
     end
     it 'calls update on state for any other string' do
-      expect(subject.update(['settings', 'move', '2'])).to be true
+      subject.update(['update', 'player1', 'move', 'pass'])
+      expect(subject.state.info[:opponent].last_move).to eq 'pass'
     end
   end
 
