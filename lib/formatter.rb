@@ -1,8 +1,7 @@
 class Formatter
-  attr_reader :line
-
   def format_input(input_line)
-    @line = input_line.split(' ')
+    input_line.gsub!(/,/, ' ') if input_line.start_with?('player_names')
+    input_line.split(' ')
   end
 
   def action_format(input_array)
