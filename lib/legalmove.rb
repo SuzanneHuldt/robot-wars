@@ -8,9 +8,6 @@ class LegalMove
   end
 
   def legal_birth(owner, moves, field)
-    p empty_cell(moves[0], field)
-    p owned_cell(owner, moves[1], field)
-    p owned_cell(owner, moves[2], field)
     (owned_cell(owner, moves[1], field) && owned_cell(owner, moves[2], field)) && empty_cell(moves[0], field)
   end
 
