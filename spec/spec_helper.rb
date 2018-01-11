@@ -2,12 +2,15 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 require './lib/bot.rb'
+require './lib/state/state.rb'
+require './lib/action.rb'
 
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console,
-  SimpleCov::Formatter::HTMLFormatter
-])
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::Console,
+    SimpleCov::Formatter::HTMLFormatter
+  ]
+)
 SimpleCov.start
 
 RSpec.configure do |config|

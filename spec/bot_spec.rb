@@ -1,22 +1,34 @@
+class ActionMock
+  def update(formatted_string)
+    true
+  end
+end
+
 describe Bot do
   before do
-    $stdin = StringIO.new("Test String")
+    $stdin = StringIO.new('Test String')
   end
 
   after do
     $stdin = STDIN
   end
 
-  describe '#receive' do
-    it 'should receive and output a string' do
-      expect(subject.receive).to eq("Test String")
+  describe '#receive_string' do
+    it 'receives and output a string' do
+      expect(subject.receive_string).to eq('Test String')
     end
   end
 
-  describe '#return_string' do
-    it 'should return a string to the engine' do
-      subject.receive
-      expect{ subject.return_string }.to output("Test String").to_stdout
+  describe '#output_string' do
+    it 'returns a string to the engine' do
+      subject.receive_string
+      expect { subject.output_string }.to output('Test String').to_stdout
+    end
+  end
+
+  describe '#action test' do
+    it 'returns true for an ACTION line' do
+      expect(subject.action_test(['action', 'move', '2'])).to be true
     end
   end
 end
