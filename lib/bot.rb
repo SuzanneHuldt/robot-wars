@@ -1,38 +1,30 @@
 class Bot
-  attr_reader :line, :action, :state
-
   def initialize
-    @action = Action.new
     @state = State.new
-    @formatter = Formatter.new
+    @action = Action.new
   end
 
   def run
-    input = (gets || '').chomp
-    return run if input == ''
-    exit(true) if input == 'quit'
-    update(format_string(input))
+    line = gets.chomp
+    exit(true) if line == 'quit'
+    parse(Formatter.format_input(line))
     run
   end
 
-  def output_string(string)
-    print string
-  end
+  private
 
-  def update(formatted_string)
-    case
-    when action_test(formatted_string)
-      output_string(@action.new_action(@formatter.action_format(formatted_string), @state.info))
-    else
-      @state.update_info(formatted_string)
+  def parse(formatted_line)
+    case formatted_line.shift
+      when 'action'
+        print Formatter.format_output(action(formatted_line.last.to_i))
+      when 'settings', 'update'
+        @state.update_info(formatted_line)
+      else
+        puts 'Please refrain from inputting invalid inputs'
     end
   end
 
-  def format_string(input_string)
-    @formatter.format_input(input_string)
-  end
-
-  def action_test(formatted_string)
-    formatted_string.shift == 'action'
+  def action(timebank)
+    @action.new_action(timebank, @state.info)
   end
 end
