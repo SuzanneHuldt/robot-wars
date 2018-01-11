@@ -1,6 +1,5 @@
 class Action
   def new_action(t, hash)
-    # t = time
-    true
+    "pass\n"
   end
 end
