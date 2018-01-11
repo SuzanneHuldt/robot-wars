@@ -1,5 +1,3 @@
-require_relative 'player.rb'
-
 class State
   attr_reader :info
 
