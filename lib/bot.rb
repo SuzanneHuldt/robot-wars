@@ -17,7 +17,7 @@ class Bot
   def parse(formatted_line)
     case formatted_line.shift
       when 'action'
-        print @formatter.format_output(action(formatted_line.last.to_i))
+        print @formatter.format_output(action(formatted_line.last))
       when 'settings', 'update'
         @state.update_info(formatted_line)
       else
@@ -26,6 +26,6 @@ class Bot
   end
 
   def action(timebank)
-    @action.new_action(timebank, @state.info)
+    @action.new_action(timebank.to_i, @state.info)
   end
 end
