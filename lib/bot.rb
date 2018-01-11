@@ -1,5 +1,5 @@
 require 'action.rb'
-require 'state.rb'
+require 'state/state.rb'
 require 'formatter.rb'
 
 class Bot
