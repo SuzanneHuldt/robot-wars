@@ -1,5 +1,3 @@
-require 'state/player'
-
 describe Player do
   let(:player) { Player.new('Marvin', 50, 'pass') }
 
