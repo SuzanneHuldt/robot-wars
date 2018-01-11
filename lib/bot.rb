@@ -13,7 +13,7 @@ class Bot
 
   def run
     update(format_string(receive_string))
-    #output_string
+    # output_string
     run
   end
 
@@ -30,7 +30,7 @@ class Bot
   def update(formatted_string)
     case
     when action_test(formatted_string)
-      @action.new_action(@formatter.action_format(formatted_string), @state.info )
+      @action.new_action(@formatter.action_format(formatted_string), @state.info)
     else
       @state.update_info(formatted_string)
     end

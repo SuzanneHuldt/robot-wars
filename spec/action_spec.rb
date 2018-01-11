@@ -1,3 +1,2 @@
 describe Action do
-  
 end

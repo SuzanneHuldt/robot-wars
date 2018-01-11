@@ -5,11 +5,12 @@ require './lib/bot.rb'
 require './lib/state/state.rb'
 require './lib/action.rb'
 
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console,
-  SimpleCov::Formatter::HTMLFormatter
-])
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::Console,
+    SimpleCov::Formatter::HTMLFormatter
+  ]
+)
 SimpleCov.start
 
 RSpec.configure do |config|
@@ -18,5 +19,4 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
-
 end
