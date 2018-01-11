@@ -1,6 +1,7 @@
 require 'action.rb'
 require 'state/state.rb'
 require 'formatter.rb'
+require 'legalmove.rb'
 
 class Bot
   attr_reader :line, :action, :state

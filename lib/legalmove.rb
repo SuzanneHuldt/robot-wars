@@ -1,21 +1,40 @@
+require './lib/state/state.rb'
+
 class LegalMove
 
-  def intialize(move, hash)
-    @move = move
-    @hash = hash
+
+  def legal_kill(move, field)
+    filled_cell(move, field)
   end
 
-  def legal_kill(move, hash)
-
+  def legal_birth(owner, moves, field)
+    p empty_cell(moves[0], field)
+    p owned_cell(owner, moves[1], field)
+    p owned_cell(owner, moves[2], field)
+    (owned_cell(owner, moves[1], field) && owned_cell(owner, moves[2], field)) && empty_cell(moves[0], field)
   end
 
-  def legal_birth(move, hash)
+  def filled_cell(move, field)
+    get_coordinates(move, field)
+    @y_axis[@x] != '.'
   end
 
-  def filled_cell(move, hash)
+  def owned_cell(owner, move, field)
+    get_coordinates(move, field)
+    @y_axis[@x] == owner
   end
 
-  def owned_cell(move, hash)
-    
+  def empty_cell(move, field)
+    get_coordinates(move, field)
+    @y_axis[@x] == '.'
   end
+
+  def get_coordinates(move, field)
+    move = move.split(',')
+    @x = (((move[0]).to_i)-1)
+    @y = (((move[1]).to_i)-1)
+    @y_axis = field[@y]
+  end
+
+
 end
