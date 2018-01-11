@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rubocop', require: false
 gem 'require_all'
+gem 'rubocop', require: false
 
 group :test do
   gem 'rspec'

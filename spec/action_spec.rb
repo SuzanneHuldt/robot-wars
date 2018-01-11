@@ -1,0 +1,2 @@
+describe Action do
+end
