@@ -1,7 +1,3 @@
-require 'action.rb'
-require 'state/state.rb'
-require 'formatter.rb'
-
 class Bot
   attr_reader :line, :action, :state
 
@@ -12,25 +8,21 @@ class Bot
   end
 
   def run
-    update(format_string(receive_string))
-    # output_string
+    input = (gets || '').chomp
+    return run if input == ''
+    exit(true) if input == 'quit'
+    update(format_string(input))
     run
   end
 
-  def receive_string
-    @input_string = gets.chomp
-  end
-
-  def output_string
-    # receive from Action
-    # needs to call Format_output on Formatter
-    print @input_string
+  def output_string(string)
+    print string
   end
 
   def update(formatted_string)
     case
     when action_test(formatted_string)
-      @action.new_action(@formatter.action_format(formatted_string), @state.info)
+      output_string(@action.new_action(@formatter.action_format(formatted_string), @state.info))
     else
       @state.update_info(formatted_string)
     end
