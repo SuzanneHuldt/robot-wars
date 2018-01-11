@@ -13,7 +13,7 @@ class Bot
 
   def run
     update(format_string(receive_string))
-    # output_string
+    #output_string(#action.export_move)
     run
   end
 
