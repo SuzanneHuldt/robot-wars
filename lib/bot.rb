@@ -7,9 +7,8 @@ class Bot
 
   def run
     line = gets.chomp
-    exit(true) if line == 'quit'
+    return if line == 'quit'
     parse(@formatter.format_input(line))
-    run
   end
 
   private
@@ -23,6 +22,7 @@ class Bot
       else
         puts 'Please refrain from inputting invalid inputs'
     end
+    run
   end
 
   def action(timebank)
