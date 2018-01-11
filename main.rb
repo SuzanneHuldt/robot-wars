@@ -8,8 +8,7 @@ require_relative 'lib/state/player'
 
 def main
   $stdout.sync = true
-  bot = Bot.new
-  bot.run
+  Bot.new.run
 end
 
 main
