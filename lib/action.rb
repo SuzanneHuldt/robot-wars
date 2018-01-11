@@ -14,6 +14,7 @@ class Action
   end
 
   def generate_move(hash)
+    # generate_move.new()
     move = MOVES.sample
     return move if move == 'pass'
     return assign_kill_coordinates(hash) if move == 'kill'
