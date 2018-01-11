@@ -22,7 +22,10 @@ class Action
 
   end
 
+
   def on_board(move, hash)
+    #for now this functionality exists within the generate move method (for random move only)
+    #it will be scooped into the legal move class eventually
     #always the same
   end
 
