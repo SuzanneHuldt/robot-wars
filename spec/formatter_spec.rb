@@ -1,5 +1,3 @@
-require 'formatter'
-
 describe Formatter do
   describe '#format_input' do
     it 'returns an array and formats an array of the input_string' do
