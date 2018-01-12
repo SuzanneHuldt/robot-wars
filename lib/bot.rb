@@ -15,12 +15,12 @@ class Bot
 
   def parse(formatted_line)
     case formatted_line.shift
-      when 'action'
-        print @formatter.format_output(action(formatted_line.last))
-      when 'settings', 'update'
-        @state.update_info(formatted_line)
-      else
-        puts 'Please refrain from inputting invalid inputs'
+    when 'action'
+      print @formatter.format_output(action(formatted_line.last))
+    when 'settings', 'update'
+      @state.update_info(formatted_line)
+    else
+      puts 'Please refrain from inputting invalid inputs'
     end
     run
   end
