@@ -13,6 +13,12 @@ class LegalMove
   #  end
   #end
 
+  def legal?(move, field, owner = nil)
+    return legal_kill(move, field) if move.class == String && move != 'pass'
+    return legal_birth(owner, move, field) if move.class == Array
+    true
+  end
+
   def legal_kill(move, field)
     filled_cell(move, field)
   end
