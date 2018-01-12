@@ -2,6 +2,16 @@ require './lib/state/state.rb'
 
 class LegalMove
 
+  #def legal_move(*owner, *move, *moves, field)
+  #  case
+  #  when #test for kill move
+  #    legal_kill(move, field)
+  #  when #test for birth move
+  #    legal_birth(owner, moves, field)
+  #  else # so in the case of pass
+  #    true #because a pass is always legal
+  #  end
+  #end
 
   def legal_kill(move, field)
     filled_cell(move, field)
@@ -13,17 +23,21 @@ class LegalMove
 
   def filled_cell(move, field)
     get_coordinates(move, field)
-    @y_axis[@x] != '.'
+    match_cell != '.'
   end
 
   def owned_cell(owner, move, field)
     get_coordinates(move, field)
-    @y_axis[@x] == owner
+    match_cell == owner
   end
 
   def empty_cell(move, field)
     get_coordinates(move, field)
-    @y_axis[@x] == '.'
+    match_cell == '.'
+  end
+
+  def match_cell
+    @y_axis[@x]
   end
 
   def get_coordinates(move, field)
@@ -32,6 +46,4 @@ class LegalMove
     @y = (((move[1]).to_i)-1)
     @y_axis = field[@y]
   end
-
-
 end
