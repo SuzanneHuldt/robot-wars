@@ -4,6 +4,7 @@ require 'simplecov-console'
 require './lib/bot.rb'
 require './lib/state/state.rb'
 require './lib/action.rb'
+require './lib/generate_move.rb'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [
