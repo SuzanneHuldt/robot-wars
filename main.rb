@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 
-require 'require_all'
-require_all 'lib'
+require_relative 'lib/bot'
+require_relative 'lib/state/state'
+require_relative 'lib/state/player'
+require_relative 'lib/action'
+require_relative 'lib/formatter'
 
 
 def main
