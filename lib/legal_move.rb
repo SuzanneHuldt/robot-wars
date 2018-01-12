@@ -8,6 +8,8 @@ class LegalMove
     true
   end
 
+  private
+
   def legal_kill(move, field)
     filled_cell(move, field)
   end
