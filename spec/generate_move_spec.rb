@@ -2,41 +2,26 @@ describe GenerateMove do
   let(:passed_hash) { {field_height: 5, field_width: 5} }
   let(:generate_move) { described_class.new(passed_hash) }
 
-  describe '#initialize' do
-    it 'is passed a hash value' do
-      expect(generate_move.game_state).to be_an_instance_of Hash
-    end
-  end
-
   describe '#random_move' do
     it 'returns pass' do
-      expect(generate_move).to receive(:generate_action).and_return('pass')
-      expect(generate_move.random_move).to eq('pass')
+      expect(generate_move).to receive(:generate_action).and_return 'pass'
+      expect(generate_move.random_move).to eq 'pass'
     end
-  end
 
-  describe '#generate_action' do
-    it 'assigns a move_type property' do
-      expect(generate_move.generate_action).to eq('pass').or eq('kill')
-        .or eq('birth')
+    it 'returns a pair of coordinates as a string' do
+      expect(generate_move).to receive(:generate_action).and_return 'kill'
+      expect(generate_move).to receive(:rand).with(passed_hash[:field_height]).and_return 3
+      expect(generate_move).to receive(:rand).with(passed_hash[:field_width]).and_return 2
+      expect(generate_move.random_move).to eq '3,2'
     end
-  end
 
-  describe '#assign_kill_coordinates' do
-    it 'assigns random coordinates' do
-      coordinates = generate_move.assign_kill_coordinates.split(',')
-      coordinates.each do |coordinate|
-        expect((coordinate.to_i <= 5) && (coordinate.to_i >= 0)).to eq(true)
+    it 'returns three pairs of string coordinates in an array' do
+      dummy_kill_coordinates = ['4,1', '1,2', '3,0']
+      expect(generate_move).to receive(:generate_action).and_return 'birth'
+      3.times do
+        expect(generate_move).to receive(:assign_coordinates).and_return dummy_kill_coordinates.shift
       end
-    end
-  end
-
-  describe '#assign_birth_coordinates' do
-    it 'assigns three pairs of random coordinates' do
-      coordinates = generate_move.assign_birth_coordinates.join(',').split(',')
-      coordinates.each do |coordinate|
-        expect((coordinate.to_i <= 5) && (coordinate.to_i >= 0)).to eq(true)
-      end
+      expect(generate_move.random_move).to eq ['4,1', '1,2', '3,0']
     end
   end
 end
