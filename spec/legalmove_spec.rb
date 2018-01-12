@@ -35,10 +35,21 @@ describe LegalMove do
     end
   end
 
-  describe legal? do
-    it 'should call #legal_kill' do
-      subject.legal?('2,3', @field)
-      expect(subject).to have_received(:legal_kill) 
+  describe 'legal?' do
+    it 'should return true' do
+      expect(subject.legal?('2,3', @field)).to eq true
+    end
+    it 'should return false'do
+      expect(subject.legal?('3,3', @field)).to eq false
+    end
+    it 'should return true' do
+      expect(subject.legal?('pass', @field)).to eq true
+    end
+    it 'should return true' do
+      expect(subject.legal?(@moves, @field, '0')).to eq true
+    end
+    it 'should return false' do
+      expect(subject.legal?(['1,2', '3,1', '3,3'], @field, '0')).to eq false
     end
   end
 end
