@@ -2,17 +2,6 @@ require './lib/state/state.rb'
 
 class LegalMove
 
-  #def legal_move(*owner, *move, *moves, field)
-  #  case
-  #  when #test for kill move
-  #    legal_kill(move, field)
-  #  when #test for birth move
-  #    legal_birth(owner, moves, field)
-  #  else # so in the case of pass
-  #    true #because a pass is always legal
-  #  end
-  #end
-
   def legal?(move, field, owner = nil)
     return legal_kill(move, field) if move.class == String && move != 'pass'
     return legal_birth(owner, move, field) if move.class == Array
