@@ -19,12 +19,23 @@ class GenerateMove
   end
 
   def assign_kill_coordinates
-    "#{rand(@game_state[:field_height])},#{rand(@game_state[:field_width])}"
+    assign_coordinates
   end
 
   def assign_birth_coordinates
-    [ "#{rand(@game_state[:field_height])},#{rand(@game_state[:field_width])}",
-      "#{rand(@game_state[:field_height])},#{rand(@game_state[:field_width])}",
-      "#{rand(@game_state[:field_height])},#{rand(@game_state[:field_width])}" ]
+    coordinates = []
+    until coordinates.length == 3 do
+      new_coordinates = assign_coordinates
+      coordinates << new_coordinates unless coordinates.include? new_coordinates
+    end
+    coordinates
+  end
+
+  private
+
+  def assign_coordinates
+    y = rand(@game_state[:field_height])
+    x = rand(@game_state[:field_width])
+    return "#{y},#{x}"
   end
 end
