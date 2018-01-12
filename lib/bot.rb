@@ -1,7 +1,6 @@
 require 'action.rb'
 require 'state/state.rb'
 require 'formatter.rb'
-require 'legalmove.rb'
 
 class Bot
   attr_reader :line, :action, :state
@@ -14,7 +13,7 @@ class Bot
 
   def run
     update(format_string(receive_string))
-    #output_string(#action.export_move)
+    # output_string
     run
   end
 

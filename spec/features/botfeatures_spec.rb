@@ -3,7 +3,7 @@ describe Bot do
   let(:action) { Action.new }
 
   describe '#update' do
-    xit 'calls update on action for an ACTION string' do
+    it 'calls update on action for an ACTION string' do
       expect(subject.update(['action', 'move', '2'])).to be true
     end
     it 'calls update on state for any other string' do
