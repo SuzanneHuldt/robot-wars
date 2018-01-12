@@ -1,10 +1,8 @@
+require 'require_all'
 require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
-require './lib/bot.rb'
-require './lib/state/state.rb'
-require './lib/action.rb'
-require './lib/generate_move.rb'
+require_rel '../lib'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [

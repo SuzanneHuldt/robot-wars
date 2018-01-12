@@ -1,16 +1,11 @@
 class Formatter
-  attr_reader :line
-
   def format_input(input_line)
-    @line = input_line.split(' ')
+    input_line.tr!(',', ' ') if input_line.include?('player_names')
+    input_line.delete!(',') if input_line.include?('game board')
+    input_line.split(' ')
   end
 
-  def action_format(input_array)
-    input_array[2].to_i
-  end
-
-  def format_output(output_line)
-    # format from Action accordingly
-    output_line
+  def format_output(action)
+    action.join(' ') + "\n"
   end
 end

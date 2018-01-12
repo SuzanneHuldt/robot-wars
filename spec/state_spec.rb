@@ -1,5 +1,3 @@
-require 'state/state'
-
 describe State do
   describe '#update_info' do
     it 'sets timebank' do

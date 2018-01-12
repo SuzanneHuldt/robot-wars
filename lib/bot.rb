@@ -1,47 +1,33 @@
-require 'action.rb'
-require 'state/state.rb'
-require 'formatter.rb'
 require 'legalmove.rb'
 
 class Bot
-  attr_reader :line, :action, :state
-
   def initialize
-    @action = Action.new
     @state = State.new
+    @action = Action.new
     @formatter = Formatter.new
   end
 
   def run
-    update(format_string(receive_string))
-    #output_string(#action.export_move)
+    line = gets.chomp
+    return if line == 'quit'
+    parse(@formatter.format_input(line))
+  end
+
+  private
+
+  def parse(formatted_line)
+    case formatted_line.shift
+    when 'action'
+      print @formatter.format_output(action(formatted_line.last))
+    when 'settings', 'update'
+      @state.update_info(formatted_line)
+    else
+      puts 'Please refrain from inputting invalid inputs'
+    end
     run
   end
 
-  def receive_string
-    @input_string = gets.chomp
-  end
-
-  def output_string
-    # receive from Action
-    # needs to call Format_output on Formatter
-    print @input_string
-  end
-
-  def update(formatted_string)
-    case
-    when action_test(formatted_string)
-      @action.new_action(@formatter.action_format(formatted_string), @state.info)
-    else
-      @state.update_info(formatted_string)
-    end
-  end
-
-  def format_string(input_string)
-    @formatter.format_input(input_string)
-  end
-
-  def action_test(formatted_string)
-    formatted_string.shift == 'action'
+  def action(timebank)
+    @action.new_action(timebank.to_i, @state.info)
   end
 end

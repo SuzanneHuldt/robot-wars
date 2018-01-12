@@ -1,3 +1,5 @@
+require 'action'
+
 describe Action do
   describe '#generate_move' do
     it 'should return pass' do
