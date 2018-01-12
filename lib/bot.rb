@@ -1,5 +1,3 @@
-require 'legalmove.rb'
-
 class Bot
   def initialize
     @state = State.new
