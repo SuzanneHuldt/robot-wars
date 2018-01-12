@@ -1,6 +1,4 @@
 class GenerateMove
-  attr_reader :game_state
-
   MOVES = ['birth', 'kill', 'pass']
 
   def initialize(hash)
@@ -13,6 +11,8 @@ class GenerateMove
     return assign_kill_coordinates if move_type == 'kill'
     return assign_birth_coordinates if move_type == 'birth'
   end
+
+  private
 
   def generate_action
     MOVES.sample
@@ -30,8 +30,6 @@ class GenerateMove
     end
     coordinates
   end
-
-  private
 
   def assign_coordinates
     y = rand(@game_state[:field_height])
