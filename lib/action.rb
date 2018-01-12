@@ -29,21 +29,21 @@ class Action
   end
 
 
-  def on_board(move, hash)
-    # for now this functionality exists within the generate move method (for random move only)
-    # it will be scooped into the legal move class eventually
-    # always the same
-  end
-
-  def legal_cell(move, hash)
-    # going to differ depending on move type
-  end
-
-  private
-
-  def assign_kill_coordinates(hash)
-
-  end
+  # def on_board(move, hash)
+  #   # for now this functionality exists within the generate move method (for random move only)
+  #   # it will be scooped into the legal move class eventually
+  #   # always the same
+  # end
+  #
+  # def legal_cell(move, hash)
+  #   # going to differ depending on move type
+  # end
+  #
+  # private
+  #
+  # def assign_kill_coordinates(hash)
+  #
+  # end
 
 
 end
