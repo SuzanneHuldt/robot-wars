@@ -13,7 +13,6 @@ describe GenerateMove do
       expect(generate_move).to receive(:generate_action).and_return('pass')
       expect(generate_move.random_move).to eq('pass')
     end
-
   end
 
   describe '#generate_action' do
