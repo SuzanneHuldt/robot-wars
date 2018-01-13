@@ -13,8 +13,8 @@ describe Formatter do
     end
     
     it 'removes commas for game board input' do
-      input = 'update game board .,.,.,1,.,0'
-      expected_output = ['update', 'game', 'board', '...1.0']
+      input = 'update game field .,.,.,1,.,0'
+      expected_output = ['update', 'game', 'field', '...1.0']
       expect(subject.format_input(input)).to eq(expected_output)
     end    
   end
