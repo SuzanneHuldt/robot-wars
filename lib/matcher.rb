@@ -4,12 +4,7 @@ class Matcher
     find_top_left_y_coordinate(board)
     find_top_left_x_coordinate(board[@y])
 
-    pattern = [
-      [[@x, @y], [@x + 1, @y], [@x, @y + 1]],
-      [[@x, @y], [@x + 1, @y], [@x + 1, @y + 1]],
-      [[@x, @y], [@x - 1, @y + 1], [@x, @y + 1]],
-      [[@x, @y], [@x, @y + 1], [@x + 1, @y + 1]]
-    ]
+    pattern = Pattern.new(@y, @x).build
 
     pattern.each do |variation|
       hits = []
