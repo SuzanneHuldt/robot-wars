@@ -1,15 +1,15 @@
 describe Matcher do
   describe '#find' do
-    it 'a pattern being found should return true' do
+    it 'a pattern being found should return the coordinates of the pattern' do
       board = [
         ['.','.','.','.'],
         ['.','1','1','.'],
         ['.','1','.','.'],
         ['.','.','.','.']
       ]
-      expect(subject.find(board)).to eq true
+      expect(subject.find(board)).to eq [[1, 1], [1, 2], [2, 1]]
     end
-    it 'no pattern found should return false' do
+    it 'no pattern found should return \'No matches\'' do
       board = [
         ['.','.','.','.'],
         ['.','1','1','.'],
