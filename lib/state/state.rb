@@ -23,10 +23,16 @@ class State
   end
 
   def handle_field(arg)
+    @info[:field] = []
+    parse_field(arg)
+    # $log.write(@info[:field])
+    # £log.write("\n----end------")
+  end
+
+  def parse_field(arg)
     return if arg == ''
-    @info[:field] ||= []
     @info[:field] << arg.slice!(0...@info[:field_width]).chars
-    handle_field(arg)
+    parse_field(arg)
   end
 
   def assign_your_bot(args)
