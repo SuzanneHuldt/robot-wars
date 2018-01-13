@@ -25,7 +25,7 @@ describe Matcher do
           ['1','1']
         ]
       ]
-      expect(subject.find(board, pattern)).to eq true
+      expect(subject.find(board)).to eq true
     end
   end
 end
