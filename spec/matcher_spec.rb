@@ -7,7 +7,8 @@ describe Matcher do
         ['.','1','.','.'],
         ['.','.','.','.']
       ]
-      expect(subject.find(board)).to eq [[1, 1], [1, 2], [2, 1]]
+      matcher = Matcher.new(board)
+      expect(matcher.find(board)).to eq [[1, 1], [1, 2], [2, 1]]
     end
     it 'no pattern found should return \'No matches\'' do
       board = [
@@ -16,7 +17,8 @@ describe Matcher do
         ['.','.','.','.'],
         ['.','.','.','.']
       ]
-      expect(subject.find(board)).to eq 'No matches'
+      matcher = Matcher.new(board)
+      expect(matcher.find(board)).to eq 'No matches'
     end
   end
 end
