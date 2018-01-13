@@ -1,8 +1,8 @@
 class Matcher
 
   def find(board)
-    find_y_coordinate(board)
-    find_x_coordinate(board[@y])
+    find_top_left_y_coordinate(board)
+    find_top_left_x_coordinate(board[@y])
 
     pattern = [
       [[@x, @y], [@x + 1, @y], [@x, @y + 1]],
@@ -23,7 +23,7 @@ class Matcher
 
   private
 
-  def find_y_coordinate(board)
+  def find_top_left_y_coordinate(board)
     board.each do |row|
       if row.include? '1'
         @y = board.index(row).to_i
@@ -32,7 +32,7 @@ class Matcher
     end
   end
 
-  def find_x_coordinate(row)
+  def find_top_left_x_coordinate(row)
     row.each do |column|
       if column.include? '1'
         @x = row.index(column).to_i
