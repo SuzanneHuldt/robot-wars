@@ -14,9 +14,9 @@ class Matcher
     pattern.each do |variation|
       hits = []
       variation.each do |coordinates|
-        hits << true if board[coordinates[1]][coordinates[0]] == '1'
+        hits << [coordinates[1], coordinates[0]] if board[coordinates[1]][coordinates[0]] == '1'
       end
-      return true if hits.length == 3
+      return hits if hits.length == 3
     end
     'No matches'
   end
