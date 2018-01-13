@@ -6,23 +6,24 @@ class Bot
   end
 
   def run
-    line = gets.chomp
-    return if line == 'quit'
-    parse(@formatter.format_input(line))
+    while line = gets
+      line.chomp == '' || parse(line.chomp)
+    end
+    run
   end
 
   private
 
-  def parse(formatted_line)
+  def parse(line)
+    formatted_line = @formatter.format_input(line)
     case formatted_line.shift
     when 'action'
       print @formatter.format_output(action(formatted_line.last))
     when 'settings', 'update'
       @state.update_info(formatted_line)
-    else
-      puts 'Please refrain from inputting invalid inputs'
+    when 'quit'
+      exit(true)
     end
-    run
   end
 
   def action(timebank)
