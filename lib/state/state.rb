@@ -25,8 +25,6 @@ class State
   def handle_field(arg)
     @info[:field] = []
     parse_field(arg)
-    # $log.write(@info[:field])
-    # £log.write("\n----end------")
   end
 
   def parse_field(arg)
