@@ -18,7 +18,7 @@ class Matcher
       end
       return true if hits.length == 3
     end
-    false
+    'No matches'
   end
 
   private

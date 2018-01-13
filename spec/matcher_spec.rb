@@ -16,7 +16,7 @@ describe Matcher do
         ['.','.','.','.'],
         ['.','.','.','.']
       ]
-      expect(subject.find(board)).to eq false
+      expect(subject.find(board)).to eq 'No matches'
     end
   end
 end
