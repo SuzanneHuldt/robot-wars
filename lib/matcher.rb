@@ -4,10 +4,21 @@ class Matcher
     find_y_coordinate(board)
     find_x_coordinate(board[@y])
 
-    p board[@y][@x]
-    p board[@y][@x + 1]
-    p board[@y + 1][@x]
-    p board[@y + 1 ][@x + 1]
+    pattern = [
+      [[@x, @y], [@x + 1, @y], [@x, @y + 1]],
+      [[@x, @y], [@x + 1, @y], [@x + 1, @y + 1]],
+      [[@x, @y], [@x - 1, @y + 1], [@x, @y + 1]],
+      [[@x, @y], [@x, @y + 1], [@x + 1, @y + 1]]
+    ]
+
+    pattern.each do |variation|
+      hits = []
+      variation.each do |coordinates|
+        hits << true if board[coordinates[1]][coordinates[0]] == '1'
+      end
+      return true if hits.length == 3
+    end
+
   end
 
   private
