@@ -9,7 +9,7 @@ class BirthPattern
 
   end
 
-  #get rid 
+  #get rid
   def set_start(field, x, y)
     @a = field[y][x]
   end
@@ -35,6 +35,8 @@ class BirthPattern
     end
     hits.length == 0
   end
+
+  
 
 
 end
