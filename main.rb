@@ -4,6 +4,7 @@ require_relative 'lib/bot'
 require_relative 'lib/state/state'
 require_relative 'lib/state/player'
 require_relative 'lib/action'
+require_relative 'lib/clock'
 require_relative 'lib/formatter'
 require_relative 'lib/move/random_move'
 
