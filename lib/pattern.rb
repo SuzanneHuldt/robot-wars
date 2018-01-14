@@ -4,7 +4,6 @@ class Pattern
     @y = y
     @x = x
     @pattern = KillTemplate.new.next_gen_square(@x, @y)
-
   end
 
   def build
