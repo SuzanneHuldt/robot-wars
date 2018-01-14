@@ -20,5 +20,13 @@ describe Matcher do
       matcher = Matcher.new(board)
       expect(matcher.find(board)).to eq 'No matches'
     end
+    it 'finding a pattern with additional squares should return \'No matches\'' do
+      board = [
+        ['.','.','.','.'],
+        ['.','1','1','.'],
+        ['.','1','.','.'],
+        ['.','.','.','1']
+      ]
+    end
   end
 end
