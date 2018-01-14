@@ -3,7 +3,7 @@ class Pattern
   def initialize(y, x)
     @y = y
     @x = x
-    @pattern = PatternTemplate.new.next_gen_square(@x, @y)
+    @pattern = KillTemplate.new.next_gen_square(@x, @y)
 
   end
 
