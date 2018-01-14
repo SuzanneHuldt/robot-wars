@@ -35,4 +35,12 @@ describe KillTemplate do
       ]
     end
   end
+
+  describe '#package' do
+    it 'returns an array of all variations of package pattern' do
+      expect(subject.package(1,1)).to eq [
+        [[1, 1], [2, 1], [0, 2], [3, 2], [0, 3], [3, 3], [1, 4], [2, 4]]
+      ]
+    end
+  end
 end
