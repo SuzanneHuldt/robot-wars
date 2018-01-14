@@ -4,7 +4,7 @@ class RandomMove
     def new_move(my_id, op_id, board)
       @board = board
       @my_cells, @op_cells, @empty_cells = get_cells(my_id, op_id)
-      @my_cells.length >= 2 ? move = MOVES.sample : ['kill', 'pass'].sample
+      move = @my_cells.length >= 2 ? MOVES.sample : MOVES[1..-1].sample
       self.send(move)
     end
 
