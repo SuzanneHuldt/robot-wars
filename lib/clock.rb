@@ -1,8 +1,8 @@
 class Clock
-  def initialize
-    @in = nil
-    @out = nil
-  end
+  # def initialize
+  #   @in = nil
+  #   @out = nil
+  # end
 
   def start
     reset
