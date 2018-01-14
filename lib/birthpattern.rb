@@ -1,16 +1,19 @@
 class BirthPattern
 
-  attr_reader :a
-  def initialize
-
+  def find_birth(field)
+    match_square(field)
   end
 
   def match_square(field,x,y)
-    break if clear_horizontal(field,x,y) != true
-    break if clear_vertical(field,x,y) != true
-    break if clear_horizontal(field,x,(y+2)) != true
-    break if clear_vertical(field,(x+3),y) != true
-    two_consecutive(field,x,(y+1))
+    arr = []
+    arr << (clear_horizontal(field,x,y) && clear_horizontal(field, x,(y+3)))
+    arr << (clear_vertical(field,x,y) && clear_vertical(field,(x+3),y))
+    arr << (two_consecutive(field,x,(y+1)) ^ two_consecutive(field,x,(y+2)))
+    arr.include? false ? false : true
+  end
+
+  def birth_cell
+
   end
 
 

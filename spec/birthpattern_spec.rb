@@ -21,12 +21,7 @@ describe BirthPattern do
     ]
   end
 
-  describe "#set start" do
-    xit "sets a to the given element of the given subarray" do
-      subject.set_start(@field_1,0,0)
-      expect(subject.a).to eq('0')
-    end
-  end
+
 
   describe "#clear horizontal" do
     it "returns true if a's next three horizontal cells are empty" do
@@ -62,5 +57,14 @@ describe BirthPattern do
     it "returns true for the two cells pattern" do
     expect(subject.match_square(@field_2,0,0)).to be(false)
   end
+end
+
+  describe "#find birth" do
+    it "returns true for birth pattern" do
+    expect(subject.find_birth(@field_1)).to be(true)
+  end
+  it "returns true for birth pattern" do
+  expect(subject.find_birth(@field_2)).to be(false)
+end
 end
 end
