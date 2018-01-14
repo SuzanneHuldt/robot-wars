@@ -9,6 +9,8 @@ class Action
     make_move
   end
 
+  private
+
   def update_info(timebank, info)
     @info = info
     @timebank = timebank
