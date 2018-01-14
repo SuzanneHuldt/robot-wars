@@ -1,9 +1,4 @@
 class Clock
-  # def initialize
-  #   @in = nil
-  #   @out = nil
-  # end
-
   def start
     reset
     @in = Process.clock_gettime(Process::CLOCK_MONOTONIC)
