@@ -7,7 +7,7 @@ class Matcher
     @board = board
     @y = find_top_left_y_coordinate
     @x = find_top_left_x_coordinate
-    @pattern = Pattern.new(@y, @x).build
+    @pattern = KillLibrary.new.next_gen_square(@x, @y)
   end
 
   def find
