@@ -1,17 +1,12 @@
 class BirthPattern
 
-  def birth(field)
-    birth_cell(@hits) if find_birth(field,0,0)  
+  def birth(field, array)
+    birth_cell(@hits) if find_birth(field, array)
   end
 
-  def find_birth(field,x,y)
-    while y < 14 do
-      while x < 16 do
-      y = 0
-      return match_square(field,x,y)
-      x+=1
-      end
-      y +=1
+  def find_birth(field, array)
+    for i in array
+      return match_square(field, i[0], i[1])
     end
   end
 
