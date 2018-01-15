@@ -7,11 +7,11 @@ class Matcher
     @pattern = Pattern.new(@y, @x).build
   end
 
-  def find(board)
+  def find
     @pattern.each do |variation|
       hits = []
       variation.each do |coordinates|
-        hits << [coordinates[1], coordinates[0]] if board[coordinates[1]][coordinates[0]] == '1'
+        hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == '1'
       end
       return hits if hits.length == variation.length && hits.length == total_alive_cells
     end
