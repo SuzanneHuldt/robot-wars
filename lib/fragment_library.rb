@@ -18,4 +18,15 @@ class FragmentLibrary
       [x, y + 5], [x + 1, y + 5], [x + 2, y + 5], [x + 3, y + 5], [x + 4, y + 5]
     ]
   end
+
+  def six_by_five(x,y)
+    [
+      [x, y], [x + 1, y], [x + 2, y], [x + 3, y], [x + 4, y], [x + 5, y],
+      [x, y + 1], [x + 5, y + 1],
+      [x, y + 2], [x + 5, y + 2],
+      [x, y + 3], [x + 5, y + 3],
+      [x, y + 4], [x + 1, y + 4], [x + 2, y + 4], [x + 3, y + 4],
+      [x + 4, y + 4], [x + 5, y + 4]
+    ]
+  end
 end
