@@ -27,11 +27,11 @@ class Action
 
   def check_time(move_time)
     @timebank -= move_time
-    return true if time_to_spend?(@timebank, move_time)
+    return true if time_to_spend?(move_time)
     false
   end
 
-  def time_to_spend?(timebank, move_time)
+  def time_to_spend?(move_time)
     @timebank > move_time && [false, true].sample
   end
 

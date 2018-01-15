@@ -1,5 +1,5 @@
 class RandomMove
-    MOVES = %w(kill birth pass)
+    MOVES = %w(birth kill pass)
 
     def new_move(my_id, op_id, board)
       @board = board
