@@ -1,4 +1,4 @@
-class KillTemplate
+class KillLibrary
   def all_patterns(x, y)
     patterns = []
     patterns << next_gen_square(x, y)
