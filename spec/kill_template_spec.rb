@@ -63,4 +63,15 @@ describe KillTemplate do
       ]
     end
   end
+
+  describe '#loaf' do
+    it 'returns an array of all variations of the loaf pattern' do
+      expect(subject.loaf(1,1)).to eq [
+        [[1, 1], [2, 1], [0, 2], [3, 2], [0, 3], [2, 3], [1, 4]],
+        [[1, 1], [2, 1], [0, 2], [3, 2], [1, 3], [3, 3], [2, 4]],
+        [[1, 1], [0, 2], [2, 2], [-1, 3], [2, 3], [0, 4], [1, 4]],
+        [[1, 1], [0, 2], [2, 2], [0, 3], [3, 3], [1, 4], [2, 4]],
+      ]
+    end
+  end
 end
