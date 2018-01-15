@@ -11,6 +11,8 @@ class Matcher
   end
 
   def find
+    fragments = find_fragments
+    p fragments
     @pattern.each do |variation|
       hits = []
       variation.each do |coordinates|
@@ -43,5 +45,10 @@ class Matcher
         end
       end
     counter
+  end
+
+  def find_fragments
+    finder = Fragment.new
+    @fragments = finder.find(@board)
   end
 end
