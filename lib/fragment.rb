@@ -5,19 +5,13 @@ class Fragment
     all_board_coordinates.each do |coordinates|
       x = coordinates[0]
       y = coordinates[1]
-      next if board[y][x] != '.'
-      next if board[y][x + 1] != '.'
-      next if board[y][x + 2] != '.'
-      next if board[y][x + 3] != '.'
-      next if board[y + 1][x] != '.'
-      next if board[y + 1][x + 3] != '.'
-      next if board[y + 2][x] != '.'
-      next if board[y + 2][x + 3] != '.'
-      next if board[y + 3][x] != '.'
-      next if board[y + 3][x + 1] != '.'
-      next if board[y + 3][x + 2] != '.'
-      next if board[y + 3][x + 3] != '.'
-      fragments << coordinates
+      four_by_four_square = [[x, y], [x + 1, y], [x + 2, y], [x + 3, y], [x, y + 1], [x + 3, y + 1], [x, y + 2],[x + 3, y + 2], [x, y + 3], [x + 1, y + 3], [x + 2, y + 3], [x + 3, y + 3]]
+      owned_cell = false
+      four_by_four_square.each do |cell|
+        board[cell[1]] ||= []
+        owned_cell = true if board[cell[1]][cell[0]] != '.'
+      end
+      fragments << coordinates if owned_cell == false
     end
     fragments
   end
