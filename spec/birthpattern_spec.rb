@@ -124,8 +124,15 @@ end
     it "returns true for birth pattern" do
     expect(subject.find_birth(@field_0,0,0)).to be(true)
   end
-  it "returns true for birth pattern" do
-  expect(subject.find_birth(@field_4,0,0)).to be_falsey
-end
-end
+    it "returns true for birth pattern" do
+      expect(subject.find_birth(@field_4,0,0)).to be_falsey
+    end
+  end
+
+  describe "#birth cell" do
+    it "returns the coordinates of a cell to birth" do
+      @hits = ['5,2']
+      expect(subject.birth_cell(@hits)).to eq('5,3')
+    end
+  end
 end
