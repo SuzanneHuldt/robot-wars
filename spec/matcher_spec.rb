@@ -8,7 +8,7 @@ describe Matcher do
         ['.','.','.','.']
       ]
       matcher = Matcher.new(board)
-      expect(matcher.find(board)).to eq [[1, 1], [1, 2], [2, 1]]
+      expect(matcher.find).to eq [[1, 1], [1, 2], [2, 1]]
     end
     it 'no pattern found should return \'No matches\'' do
       board = [
@@ -18,7 +18,7 @@ describe Matcher do
         ['.','.','.','.']
       ]
       matcher = Matcher.new(board)
-      expect(matcher.find(board)).to eq 'No matches'
+      expect(matcher.find).to eq 'No matches'
     end
     it 'finding a pattern with additional squares should return \'No matches\'' do
       board = [
@@ -28,7 +28,7 @@ describe Matcher do
         ['.','.','.','.']
       ]
       matcher = Matcher.new(board)
-      expect(matcher.find(board)).to eq 'No matches'
+      expect(matcher.find).to eq 'No matches'
     end
   end
 end
