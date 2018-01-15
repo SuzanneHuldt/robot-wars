@@ -27,6 +27,8 @@ describe Matcher do
         ['.','1','.','.'],
         ['.','.','.','1']
       ]
+      matcher = Matcher.new(board)
+      expect(matcher.find(board)).to eq 'No matches'
     end
   end
 end
