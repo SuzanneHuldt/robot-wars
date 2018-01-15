@@ -1,5 +1,5 @@
 class CellChecker
-  attr_reader :valid_grid_coordinates, :field
+  attr_reader :valid_grid_coordinates
 
   def initialize(field)
     @field = field
@@ -12,12 +12,5 @@ class CellChecker
         @valid_grid_coordinates << "#{x},#{y}"
       end
     end
-
-    @valid_grid_coordinates.each do |coordiates|
-      coords = coordiates.split(",")
-      # p @field[coords[0].to_i][coords[1].to_i]
-    end
   end
 end
-
-#&& (@field[y_loop][x_loop + 3] != nil)
