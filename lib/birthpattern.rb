@@ -6,8 +6,16 @@ class BirthPattern
 
   def find_birth(field, array)
     for i in array
-      return match_square(field, i[0], i[1])
+      return match_square(field, get_x(i), get_y(i))
     end
+  end
+
+  def get_x(sub_array)
+    sub_array[0]
+  end
+
+  def get_y(sub_array)
+    sub_array[1]
   end
 
   def birth_cell(hits)

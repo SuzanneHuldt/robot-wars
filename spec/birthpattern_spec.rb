@@ -76,6 +76,26 @@ describe BirthPattern do
       ['.','.','.','.','.','.','.','.','.','.','.','.','.','.'],
       ['.','.','.','.','.','.','.','.','.','.','.','.','.','.'],
   ]
+  @field_5 = [  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+    ['.','0','0','.','.','0','0','.','.','.','.','.','.','.'],
+    ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+    ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+    ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+    ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+    ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+    ['.','1','.','.','.','.','.','.','.','.','.','.','.','.']
+]
+@field_6 = [
+  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.'],
+  ['.','1','.','.','.','.','.','.','.','.','.','.','.','.']
+
+]
 
   end
 
@@ -107,16 +127,28 @@ describe BirthPattern do
     expect(subject.match_square(@field_2,0,0)).to be(false)
   end
   it "returns true for the two cells pattern" do
-    @field_5 = [['.','.','.','.'],['.','.','.','.'],['.','.','.','.'],['.','.','.','.']]
-    expect(subject.match_square(@field_5,0,0)).to be(false)
+    @field_11 = [['.','.','.','.'],['.','.','.','.'],['.','.','.','.'],['.','.','.','.']]
+    expect(subject.match_square(@field_11,0,0)).to be(false)
   end
   it "returns true for the two cells pattern" do
-    @field_6 = [['.','.','.','.'],['.','0','0','.'],['.','.','.','.'],['.','.','.','.']]
-    expect(subject.match_square(@field_6,0,0)).to be(true)
+    @field_12 = [['.','.','.','.'],['.','0','0','.'],['.','.','.','.'],['.','.','.','.']]
+    expect(subject.match_square(@field_12,0,0)).to be(true)
   end
   it "returns true for the two cells pattern" do
     @field_7 = [['.','.','.','.'],['.','1','1','.'],['.','.','.','.'],['.','.','.','.']]
     expect(subject.match_square(@field_7,0,0)).to be(false)
+  end
+  it "returns true for the two cells pattern" do
+    @field_8 = [['.','.','.','.'],['.','.','.','.'],['0','0','.','.'],['.','.','.','.']]
+    expect(subject.match_square(@field_8,0,0)).to be(false)
+  end
+  it "returns true for the two cells pattern" do
+    @field_9 = [['.','.','.','.'],['.','.','.','.'],['.','1','1','.'],['.','.','.','.']]
+    expect(subject.match_square(@field_9,0,0)).to be(false)
+  end
+  it "returns true for the two cells pattern" do
+    @field_10 = [['.','.','.','.'],['.','.','.','.'],['0','.','0','.'],['.','.','.','.']]
+    expect(subject.match_square(@field_10,0,0)).to be(false)
   end
 end
 
@@ -126,6 +158,12 @@ end
   end
     it "returns true for birth pattern" do
       expect(subject.find_birth(@field_4,[[0,0],[1,3]])).to be_falsey
+    end
+    it "returns true for birth pattern" do
+      expect(subject.find_birth(@field_5,[[0,0],[1,3]])).to be(true)
+    end
+    it "returns true for birth pattern" do
+      expect(subject.find_birth(@field_6,[[0,0],[1,3]])).to be_falsey
     end
   end
 
