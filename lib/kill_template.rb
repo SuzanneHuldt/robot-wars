@@ -1,4 +1,16 @@
 class KillTemplate
+  def all_patterns(x, y)
+    patterns = []
+    patterns << next_gen_square(x, y)
+    patterns << tub(x, y)
+    patterns << beehive(x, y)
+    patterns << blinker(x, y)
+    patterns << package(x, y)
+    patterns << boat(x, y)
+    patterns << ship(x, y)
+    patterns << loaf(x, y)
+  end
+
   def next_gen_square(x, y)
     [
       [[x, y], [x + 1, y], [x, y + 1]],
