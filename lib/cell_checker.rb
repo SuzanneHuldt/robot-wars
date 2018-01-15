@@ -17,8 +17,8 @@ class CellChecker
 
   def identify_blank_grid_of_4
     to_be_removed = []
-    @valid_grid_coordinates.each do |coordiates|
-      coords = coordiates.split(",")
+    @valid_grid_coordinates.each do |coordinates|
+      coords = coordinates.split(",")
       x_loop = coords[0].to_i
       y_loop = coords[1].to_i
       remove_this_coordinate = false
@@ -33,7 +33,7 @@ class CellChecker
         end
         x_counter += 1
       end
-    @to_be_removed << coordiates if remove_this_coordinate == false
+    @to_be_removed << coordinates if remove_this_coordinate == false
     end
   end
 
@@ -41,5 +41,18 @@ class CellChecker
     @to_be_removed.each do |remove|
       @valid_grid_coordinates.delete(remove)
     end
+  end
+
+  def get_valid_coordinates
+    check_for_valid_grid_of_4
+    identify_blank_grid_of_4
+    remove_blank_grid_of_4
+
+    valid_coords = []
+    @valid_grid_coordinates.each do |coordinates|
+      coords = coordinates.split(",")
+      valid_coords << [coords[0].to_i,coords[1].to_i]
+    end
+    valid_coords
   end
 end
