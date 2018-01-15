@@ -11,7 +11,7 @@ describe Fragment do
         ['.', '.', '0', '1', '.', '.', '1', '1'],
         ['1', '.', '0', '.', '.', '.', '1', '0']
       ]
-      expect(subject.find(board)).to eq [1, 1]
+      expect(subject.find(board)).to eq [[1, 1]]
     end
   end
 end
