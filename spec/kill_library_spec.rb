@@ -1,4 +1,4 @@
-describe KillTemplate do
+describe KillLibrary do
   describe '#next_gen_square' do
     it 'returns an array of all variations of a next_gen_square' do
       expect(subject.next_gen_square(1,1)).to eq [
