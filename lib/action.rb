@@ -1,18 +1,22 @@
+require 'birthpattern.rb'
+require 'cell_checker.rb'
 class Action
+  def initialize
+    @birth = BirthPattern.new
+  end
+
   def new_action(t, hash)
-    ['pass']
+    actions = [birth(t,hash),#kill(t,hash),'pass']
+    actions.sample
   end
 
-  def legal_move(move, hash)
-
+  def birth(t,hash)
+    @checker = CellChecker.new(extract_field(hash))
+    @birth.birth(field,(@checker.get_valid_coordinates))
+    #run kill and concatenate
   end
 
-  def generate_move(hash)
-
+  def extract_field(hash)
+    hash.field
   end
-
-  def export_move(move)
-
-  end
-
 end

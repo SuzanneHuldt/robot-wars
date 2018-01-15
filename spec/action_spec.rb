@@ -1,6 +1,7 @@
 require 'action'
 
-describe Action do
+
+
   # describe '#generate_move' do
   #   it 'should return pass' do
   #     stub_const('Action::MOVES', ['pass'])
@@ -15,4 +16,4 @@ describe Action do
   #     expect(subject.generate_move({})).to eq 'kill 1,2'
   #   end
   # end
-end
+#end

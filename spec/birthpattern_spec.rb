@@ -122,10 +122,10 @@ end
 
   describe "#find birth" do
     it "returns true for birth pattern" do
-    expect(subject.find_birth(@field_0,0,0)).to be(true)
+    expect(subject.find_birth(@field_0,[[0,0],[1,3]])).to be(true)
   end
     it "returns true for birth pattern" do
-      expect(subject.find_birth(@field_4,0,0)).to be_falsey
+      expect(subject.find_birth(@field_4,[[0,0],[1,3]])).to be_falsey
     end
   end
 
