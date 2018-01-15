@@ -47,7 +47,7 @@ describe CellChecker do
       cellChecker.check_for_valid_grid_of_4
       cellChecker.remove_blank_grid_of_4
       expect(cellChecker.valid_grid_coordinates).to eq([
-         '1,7','2,7','7,10','10,2','10,7'
+         '1,7','2,7','5,12','7,10','10,2','10,7'
         ])
     end
   end
