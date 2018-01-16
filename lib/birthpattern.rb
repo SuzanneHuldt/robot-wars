@@ -30,14 +30,14 @@ class BirthPattern
     var = hits.sample
     x = var[0].to_i
     y = var[2].to_i + 1
-    cell = "#{x},#{y}"
+    [y,x]
   end
 
   def birth_cell_vertical(hits)
     var = hits.sample
     x = var[0].to_i + 1
     y = var[2].to_i
-    cell = "#{x},#{y}"
+    [y,x]
   end
 
 

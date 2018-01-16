@@ -224,14 +224,14 @@ end
   describe "#birth cell horizontal" do
     it "returns the coordinates of a cell to birth" do
       @hits = ['5,2']
-      expect(subject.birth_cell_horizontal(@hits)).to eq('5,3')
+      expect(subject.birth_cell_horizontal(@hits)).to eq([3,5])
     end
   end
 
   describe "#birth cell vertical" do
     it "returns the coordinates of the cell to birth" do
       @hits = ['5,2']
-      expect(subject.birth_cell_vertical(@hits)).to eq('6,2')
+      expect(subject.birth_cell_vertical(@hits)).to eq([2,6])
     end
   end
 
