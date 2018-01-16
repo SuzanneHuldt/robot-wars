@@ -33,6 +33,9 @@ class BirthPattern
     arr.include? false ? false : true
   end
 
+  def clear_vertical(field,x,y)
+  end
+
 
   def clear_horizontal(field, x, y)
     hits = []

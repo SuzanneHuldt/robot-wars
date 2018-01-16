@@ -18,7 +18,7 @@ class Action
 
   def kill(t,hash)
     @checker = CellChecker.new(extract_field(hash))
-
+    
   end
 
   def extract_field(hash)
