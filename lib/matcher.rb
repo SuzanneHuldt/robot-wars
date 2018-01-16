@@ -5,41 +5,49 @@ class Matcher
 
   def initialize(board)
     @board = board
-    @y = find_top_left_y_coordinate
-    @x = find_top_left_x_coordinate
-    @pattern = KillLibrary.new.next_gen_square(@x, @y)
   end
 
   def find
     fragments = find_fragments
-    p fragments
-    @pattern.each do |variation|
-      hits = []
-      variation.each do |coordinates|
-        hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == OPPOSITION_CELL
+    hits  = []
+    fragments.each do |fragment|
+      @y = fragment[1] + 1
+      @x = fragment[0] + 1
+      while @x <= @board[@y].length
+        break if @board[@y][@x] == OPPOSITION_CELL
+        @x += 1
       end
-      return hits if hits.length == variation.length && hits.length == total_alive_cells
+      @patterns = KillLibrary.new.next_gen_square(@x, @y)
+      @patterns.each do |variation|
+        p "VARIATION: #{variation}"
+        variation.each do |coordinates|
+            p "COORDS: #{coordinates}"
+            hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == OPPOSITION_CELL
+            p "HITS: #{hits}"
+        end
+        return hits if hits.length == variation.length &&  hits.length == total_alive_cells(fragment)
+      end
     end
     'No matches'
   end
 
   private
 
-  def find_top_left_y_coordinate
-    @board.each do |row|
-      return @board.index(row).to_i if row.include? OPPOSITION_CELL
+  def find_top_left_y_coordinate(board)
+    board.each do |row|
+      return board.index(row).to_i if row.include? OPPOSITION_CELL
     end
   end
 
-  def find_top_left_x_coordinate
-    @board[@y].each do |column|
-      return @board[@y].index(column).to_i if column.include? OPPOSITION_CELL
+  def find_top_left_x_coordinate(board)
+    board[@y].each do |column|
+      return row[@y].index(column).to_i if column.include? OPPOSITION_CELL
     end
   end
 
-  def total_alive_cells
+  def total_alive_cells(fragment)
     counter = 0
-      @board.each_with_index do |row, y|
+      fragment.each_with_index do |row, y|
         row.each_with_index do |cell, x|
           counter += 1 if cell == OPPOSITION_CELL || cell == PLAYER_CELL
         end

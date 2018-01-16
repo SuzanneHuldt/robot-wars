@@ -1,20 +1,28 @@
 class Fragment
-  
+
   def find(board)
     all_board_coordinates = find_all_coordinates(board)
     fragments = []
+    @inner_dimensions = []
     all_board_coordinates.each do |coordinates|
       x = coordinates[0]
       y = coordinates[1]
-      four_by_four_square = [[x, y], [x + 1, y], [x + 2, y], [x + 3, y], [x, y + 1], [x + 3, y + 1], [x, y + 2],[x + 3, y + 2], [x, y + 3], [x + 1, y + 3], [x + 2, y + 3], [x + 3, y + 3]]
+      fragment_templates = FragmentLibrary.new.all_fragments(x, y)
       owned_cell = false
-      four_by_four_square.each do |cell|
-        board[cell[1]] ||= []
-        owned_cell = true if board[cell[1]][cell[0]] != '.'
+      fragment_templates.each do |template|
+        template[0].each do |cell|
+          board[cell[1]] ||= []
+          owned_cell = true if board[cell[1]][cell[0]] != '.'
+        end
+        fragments << coordinates if owned_cell == false
+        @inner_dimensions << template[1] if owned_cell == false
       end
-      fragments << coordinates if owned_cell == false
     end
-    fragments
+  end
+
+  def get_inner(board)
+    find(board)
+    width =
   end
 
   private
