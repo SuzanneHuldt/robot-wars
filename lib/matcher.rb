@@ -17,12 +17,14 @@ class Matcher
         break if @board[@y][@x] == OPPOSITION_CELL
         @x += 1
       end
-      @patterns = KillLibrary.new.next_gen_square(@x, @y)
-      @patterns.each do |variation|
-        variation.each do |coordinates|
+      @patterns = KillLibrary.new.all_patterns(@x, @y)
+      @patterns.each do |pattern|
+        pattern.each do |variation|
+          variation.each do |coordinates|
             hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == OPPOSITION_CELL
+          end
+          return hits if hits.length == variation.length && hits.length == total_alive_cells(Fragment.new.get_inner(@board))
         end
-        return hits if hits.length == variation.length && hits.length == total_alive_cells(Fragment.new.get_inner(@board))
       end
     end
     'No matches'
