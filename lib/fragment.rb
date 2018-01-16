@@ -16,15 +16,34 @@ class Fragment
         end
         fragments << coordinates if owned_cell == false
         @inner_dimensions << template[1] if owned_cell == false
+        # p @inner_dimensions
       end
     end
+    # get_inner(fragments, board)
     fragments
   end
 
-  # def get_inner(board)
-  #   find(board)
-  #   width =
-  # end
+  def get_inner(board)
+    fragments_coordinates = find(board)
+    fragments = []
+
+    fragments_coordinates.each_with_index do |fragment, index|
+      x = fragment[0] + 1
+      y = fragment[1] + 1
+      width = @inner_dimensions[index][0]
+      height = @inner_dimensions[index][1]
+
+      width.times do |w|
+        row = []
+        height.times do |h|
+          row << board[x + w][y + h]
+        end
+        fragments << row
+      end
+
+    end
+    fragments
+  end
 
   private
 
