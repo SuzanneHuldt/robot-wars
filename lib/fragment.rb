@@ -18,12 +18,13 @@ class Fragment
         @inner_dimensions << template[1] if owned_cell == false
       end
     end
+    fragments
   end
 
-  def get_inner(board)
-    find(board)
-    width =
-  end
+  # def get_inner(board)
+  #   find(board)
+  #   width =
+  # end
 
   private
 
