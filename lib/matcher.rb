@@ -9,7 +9,6 @@ class Matcher
 
   def find
     fragment_coordinates = find_fragments
-    p fragment_coordinates
     hits  = []
     fragment_coordinates.each do |fragment|
       @y = fragment[1] + 1
