@@ -1,0 +1,2 @@
+describe Bot do
+end
