@@ -16,10 +16,8 @@ class Fragment
         end
         fragments << coordinates if owned_cell == false
         @inner_dimensions << template[1] if owned_cell == false
-        # p @inner_dimensions
       end
     end
-    # get_inner(fragments, board)
     fragments
   end
 
