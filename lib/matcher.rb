@@ -8,9 +8,10 @@ class Matcher
   end
 
   def find
-    fragments = find_fragments
+    fragment_coordinates = find_fragments
+    p fragment_coordinates
     hits  = []
-    fragments.each do |fragment|
+    fragment_coordinates.each do |fragment|
       @y = fragment[1] + 1
       @x = fragment[0] + 1
       while @x <= @board[@y].length
@@ -19,13 +20,10 @@ class Matcher
       end
       @patterns = KillLibrary.new.next_gen_square(@x, @y)
       @patterns.each do |variation|
-        p "VARIATION: #{variation}"
         variation.each do |coordinates|
-            p "COORDS: #{coordinates}"
             hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == OPPOSITION_CELL
-            p "HITS: #{hits}"
         end
-        return hits if hits.length == variation.length &&  hits.length == total_alive_cells(fragment)
+        return hits if hits.length == variation.length && hits.length == total_alive_cells(Fragment.new.get_inner(@board))
       end
     end
     'No matches'
