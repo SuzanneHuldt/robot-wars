@@ -1,2 +1,3 @@
 describe Bot do
+
 end

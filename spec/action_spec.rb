@@ -1,5 +1,4 @@
 
-
   # describe '#generate_move' do
   #   it 'should return pass' do
   #     stub_const('Action::MOVES', ['pass'])

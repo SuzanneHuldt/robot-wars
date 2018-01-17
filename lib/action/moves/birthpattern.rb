@@ -1,5 +1,4 @@
 class BirthPattern
-
   def birth(field, array)
     moves = []
     if find_birth_horizontal(field, array)

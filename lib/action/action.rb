@@ -17,3 +17,4 @@ class Action
     @op_id = @my_id == '0' ? '1' : '0'
   end
 end
+

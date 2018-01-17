@@ -56,3 +56,4 @@ class CellChecker
     valid_coords
   end
 end
+

@@ -31,3 +31,4 @@ class Generator
     cell
   end
 end
+

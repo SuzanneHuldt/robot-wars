@@ -37,3 +37,4 @@ class GenerateMove
     return "#{y},#{x}"
   end
 end
+

@@ -25,3 +25,4 @@ describe GenerateMove do
     end
   end
 end
+

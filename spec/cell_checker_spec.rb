@@ -100,3 +100,4 @@ describe CellChecker do
     end
   end
 end
+

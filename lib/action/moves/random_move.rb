@@ -84,3 +84,4 @@ class RandomMove
     cells
   end
 end
+

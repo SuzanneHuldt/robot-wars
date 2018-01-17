@@ -1,5 +1,4 @@
 class Fragment
-
   def find(board)
     all_board_coordinates = find_all_coordinates(board)
     fragments = []

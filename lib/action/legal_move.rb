@@ -42,3 +42,4 @@ class LegalMove
     @y_axis = field[@y]
   end
 end
+

@@ -1,5 +1,4 @@
 class FragmentLibrary
-
   def all_fragments(x, y)
     fragments = []
     fragments << four_by_four(x, y)

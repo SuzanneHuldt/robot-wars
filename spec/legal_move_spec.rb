@@ -23,3 +23,4 @@ describe LegalMove do
     end
   end
 end
+

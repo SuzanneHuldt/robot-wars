@@ -59,3 +59,4 @@ class State
     @info[:opponent].update_name(names[1])
   end
 end
+
