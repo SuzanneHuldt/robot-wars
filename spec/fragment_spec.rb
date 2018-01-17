@@ -27,10 +27,10 @@ describe Fragment do
         ['.', '.', '0', '1', '.', '.', '1', '1'],
         ['1', '.', '0', '.', '.', '.', '1', '0']
       ]
-      expect(subject.get_inner(board)).to eq [
+      expect(subject.get_inner(board)).to eq [[
         ['0', '0'],
         ['0', '.']
-      ]
+      ]]
     end
   end
 end
