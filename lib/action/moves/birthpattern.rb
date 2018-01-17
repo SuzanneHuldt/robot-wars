@@ -65,7 +65,6 @@ class BirthPattern
     arr = []
     arr << (clear_vertical(field,x,y) && clear_vertical(field, (x+3),y))
     arr << (two_consecutive_up(field,(x+1),y) ^ two_consecutive_up(field,(x+2),y))
-    # p arr
     if arr.include? false
       false
     else
