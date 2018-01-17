@@ -15,5 +15,5 @@ update player1 living_cells 50
 action move 5000
 action move 5000
 action move 5000
-action move 5000
+action move 100
 quit
