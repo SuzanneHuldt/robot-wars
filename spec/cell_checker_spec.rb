@@ -19,10 +19,10 @@ describe CellChecker do
               ['1', '0', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.'] # 15
            ]) }
 
-  describe '#check_for_valid_grid_of_4' do
+  describe '#trim_edges' do
     it 'creates an array of valid 4x4 grids' do
-      cellChecker.check_for_valid_grid_of_4
-      expect(cellChecker.valid_grid_coordinates).to eq([
+      cellChecker.trim_edges
+      expect(cellChecker.grid_coordinates).to eq([
          '0,0','0,1','0,2','0,3','0,4','0,5','0,6','0,7','0,8','0,9','0,10','0,11','0,12',
          '1,0','1,1','1,2','1,3','1,4','1,5','1,6','1,7','1,8','1,9','1,10','1,11','1,12',
          '2,0','2,1','2,2','2,3','2,4','2,5','2,6','2,7','2,8','2,9','2,10','2,11','2,12',
@@ -44,7 +44,7 @@ describe CellChecker do
 
   describe '#identify_blank_grid_of_4' do
     it 'identifys the blank 4x4 grids' do
-      cellChecker.check_for_valid_grid_of_4
+      cellChecker.trim_edges
       cellChecker.identify_blank_grid_of_4
       # expect(cellChecker.identify_blank_grid_of_4).to eq([
       expect(cellChecker.to_be_removed).to eq([
@@ -54,11 +54,11 @@ describe CellChecker do
   end
 
   describe '#remove_blank_grid_of_4' do
-    it 'removes blank 4x4 grids from valid_grid_coordinates' do
-      cellChecker.check_for_valid_grid_of_4
+    it 'removes blank 4x4 grids from grid_coordinates' do
+      cellChecker.trim_edges
       cellChecker.identify_blank_grid_of_4
       cellChecker.remove_blank_grid_of_4
-      expect(cellChecker.valid_grid_coordinates).to eq([
+      expect(cellChecker.grid_coordinates).to eq([
          '0,0','0,1','0,2','0,3','0,4','0,5','0,6','0,7','0,8','0,9','0,10','0,11','0,12',
          '1,0','1,1','1,2','1,3','1,4','1,5','1,6','1,8','1,9','1,10','1,11','1,12',
          '2,0','2,1','2,2','2,3','2,4','2,5','2,6','2,8','2,9','2,10','2,11','2,12',

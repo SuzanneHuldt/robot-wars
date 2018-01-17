@@ -1,23 +1,22 @@
 class CellChecker
-  attr_reader :valid_grid_coordinates, :to_be_removed
+  attr_reader :grid_coordinates, :to_be_removed
 
   def initialize(field)
     @field = field
-    @valid_grid_coordinates = []
+    @grid_coordinates = []
     @to_be_removed = []
   end
 
-  def check_for_valid_grid_of_4
+  def trim_edges
     15.times do |x|
       13.times do |y|
-        @valid_grid_coordinates << "#{x},#{y}"
+        @grid_coordinates << "#{x},#{y}"
       end
     end
   end
 
   def identify_blank_grid_of_4
-    to_be_removed = []
-    @valid_grid_coordinates.each do |coordinates|
+    @grid_coordinates.each do |coordinates|
       coords = coordinates.split(",")
       x_loop = coords[0].to_i
       y_loop = coords[1].to_i
@@ -39,17 +38,16 @@ class CellChecker
 
   def remove_blank_grid_of_4
     @to_be_removed.each do |remove|
-      @valid_grid_coordinates.delete(remove)
+      @grid_coordinates.delete(remove)
     end
   end
 
   def get_valid_coordinates
-    check_for_valid_grid_of_4
+    trim_edges
     identify_blank_grid_of_4
     remove_blank_grid_of_4
-
     valid_coords = []
-    @valid_grid_coordinates.each do |coordinates|
+    @grid_coordinates.each do |coordinates|
       coords = coordinates.split(",")
       valid_coords << [coords[0].to_i,coords[1].to_i]
     end
