@@ -30,7 +30,8 @@ class RandomMove
     random_moves.each do |move|
       next_gen = @generator.next_generation(@generator.next_generation(apply_move(move)))
       score = next_gen.flatten.count(@my_id) - next_gen.flatten.count(@op_id)
-      score = 1000 if next_gen.flatten.count(@op_id) <= 2
+      score = -1000 if next_gen.flatten.count(@op_id) < 3
+      score = 1000 if next_gen.flatten.count(@op_id) == 0
       best_move = [move, score] if score > best_move[1]
     end
     best_move[0]
