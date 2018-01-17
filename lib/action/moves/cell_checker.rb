@@ -12,7 +12,6 @@ class CellChecker
         @grid_coordinates << "#{x},#{y}"
       end
     end
-     @grid_coordinates
   end
 
   def identify_blank_grid_of_4(field)
@@ -24,7 +23,6 @@ class CellChecker
         @to_be_removed << "#{x},#{y}"
       end
       end
-    @to_be_removed
   end
 
   def blank_4x4?(field, x, y)
@@ -55,10 +53,14 @@ class CellChecker
      @grid_coordinates
   end
 
-  def get_valid_coordinates(field)
+  def prepare_grid(field)
     trim_edges(field)
     identify_blank_grid_of_4(field)
     remove_blank_grid_of_4
+  end
+
+  def get_valid_coordinates(field)
+    prepare_grid(field)
     valid_coords = []
     @grid_coordinates.each do |coordinates|
       coords = coordinates.split(",")
