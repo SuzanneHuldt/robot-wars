@@ -19,6 +19,8 @@ class RandomMove
     generate_move(move_time, timebank)
   end
 
+  private
+
   def generate_move(move_time, timebank)
     random_moves = []
     best_move = ['pass', -200]
