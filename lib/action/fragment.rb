@@ -1,23 +1,12 @@
 class Fragment
 
+  def initialize
+    @inner_dimensions = []
+  end
+
   def find(board)
     all_board_coordinates = find_all_coordinates(board)
-    fragments = []
-    @inner_dimensions = []
-    all_board_coordinates.each do |coordinates|
-      x, y = assign_board_x_and_y(coordinates)
-      fragment_templates = FragmentLibrary.new.all_fragments(x, y)
-      owned_cell = false
-      fragment_templates.each do |template|
-        template[0].each do |cell|
-          board[cell[1]] ||= []
-          owned_cell = true if board[cell[1]][cell[0]] != '.'
-        end
-        fragments << coordinates if owned_cell == false
-        @inner_dimensions << template[1] if owned_cell == false
-      end
-    end
-    fragments
+    return_fragment_top_left_coordinates(board, all_board_coordinates)
   end
 
   def get_inner(board)
@@ -26,6 +15,36 @@ class Fragment
   end
 
   private
+
+  def return_fragment_top_left_coordinates(board, coordinates)
+    fragments = []
+    coordinates.each do |coordinates|
+      x, y = assign_board_x_and_y(coordinates)
+      fragment_templates = FragmentLibrary.new.all_fragments(x, y)
+      check_for_fragments(board, coordinates, fragment_templates, fragments, x, y)
+    end
+    fragments
+  end
+
+  def check_for_fragments(board, coordinates, templates, fragments, x, y)
+    templates.each do |template|
+      owned_cell = false
+      template[0].each do |cell|
+        board[cell[1]] ||= []
+        owned_cell = true if board[cell[1]][cell[0]] != '.'
+      end
+      fragments << coordinates if owned_cell == false
+      @inner_dimensions << template[1] if owned_cell == false
+    end
+  end
+
+  def check_cell_ownership(board, template, owned_cell)
+    template[0].each do |cell|
+      board[cell[1]] ||= []
+      owned_cell = true if board[cell[1]][cell[0]] != '.'
+    end
+    owned_cell
+  end
 
   def find_all_coordinates(fragment)
     all_board_coordinates = []
@@ -43,16 +62,10 @@ class Fragment
     coordinates << y
   end
 
-  def build_fragment(board, x, y, width, height)
-    fragment = []
-    width.times do |w|
-      row = []
-      height.times do |h|
-        row << board[x + w][y + h]
-      end
-      fragment << row
-    end
-    fragment
+  def assign_board_x_and_y(coordinates)
+    x = coordinates[0]
+    y = coordinates[1]
+    return x, y
   end
 
   def build_fragment_array(board, coordinates)
@@ -63,12 +76,6 @@ class Fragment
       fragments << build_fragment(board, x, y, width, height)
     end
     fragments
-  end
-
-  def assign_board_x_and_y(coordinates)
-    x = coordinates[0]
-    y = coordinates[1]
-    return x, y
   end
 
   def assign_fragment_x_and_y(fragment)
@@ -83,4 +90,15 @@ class Fragment
     return width, height
   end
 
+  def build_fragment(board, x, y, width, height)
+    fragment = []
+    width.times do |w|
+      row = []
+      height.times do |h|
+        row << board[x + w][y + h]
+      end
+      fragment << row
+    end
+    fragment
+  end
 end
