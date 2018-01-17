@@ -27,7 +27,7 @@ class Matcher
         end
       end
     end
-    'No matches'
+    []
   end
 
   private

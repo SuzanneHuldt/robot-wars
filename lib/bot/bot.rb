@@ -8,9 +8,9 @@ class Bot
 
   def run
     while (line = gets)
-      @clock.start
+      # @clock.start
       line.chomp == '' || parse(line.chomp)
-      p @clock.stop
+      # p @clock.stop
     end
     run
   end

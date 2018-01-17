@@ -6,13 +6,16 @@ class RandomMove
 
   def new_move(my_id, op_id, field, move_time, timebank)
     @cell_checker = CellChecker.new(field)
+    @matcher = Matcher.new(field)
     @field = field
     @my_id = my_id    
     @op_id = op_id
     @my_cells, @op_cells, @empty_cells = get_cells(@my_id, @op_id)
-    @kill_cells = (@op_cells + @my_cells).shuffle
     @moves = @my_cells.length >= 2 ? %w(birth kill) : %w(kill)
     @birth_patterns = @birth.birth(field, @cell_checker.get_valid_coordinates)
+    @kill_patterns = @matcher.find
+    @empty_cells = @empty_cells - @birth_patterns
+    @kill_cells = (@op_cells + @my_cells - @kill_patterns).shuffle
     generate_move(move_time, timebank)
   end
 
@@ -50,12 +53,16 @@ class RandomMove
   end
 
   def kill
+    while @kill_patterns != []
+      return ['kill', @kill_patterns.shift]
+    end
     kill_cell = @kill_cells[0]
     @kill_cells.rotate!(1)
     ['kill', kill_cell]
   end
 
   def birth
+    @empty_cells.shuffle!
     @my_cells.shuffle!
     while @birth_patterns != []
       return ['birth', @birth_patterns.shift, @my_cells[0], @my_cells[-1]]
