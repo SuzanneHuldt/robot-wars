@@ -23,9 +23,8 @@ class RandomMove
     random_moves = []
     best_move = ['pass', -200]
     random_moves << ['pass']
-    moves_number = timebank / 4
-    moves_number = 100 if moves_number > 100
-    moves_number.times { random_moves << send(@moves.sample) }
+    number_of_moves = (timebank / 4) > 100 ? 100 : timebank / 4
+    number_of_moves.times { random_moves << send(@moves.sample) }
     random_moves.uniq!
     random_moves.each do |move|
       next_gen = @generator.next_generation(@generator.next_generation(apply_move(move)))
