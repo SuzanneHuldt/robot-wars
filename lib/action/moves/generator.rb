@@ -12,6 +12,8 @@ class Generator
     @next_gen
   end
 
+  private
+
   def neighbours(x, y)
     neighbours_list = []
     (x-1..x+1).each do |row|
@@ -31,4 +33,3 @@ class Generator
     cell
   end
 end
-
