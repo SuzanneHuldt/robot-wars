@@ -18,7 +18,6 @@ require_relative 'lib/action/moves/pattern_libraries/fragment_library'
 require_relative 'lib/action/moves/pattern_libraries/kill_library'
 
 
-
 def main
   $stdout.sync = true
   Bot.new.run
