@@ -91,7 +91,7 @@ class Fragment
   def assign_width_and_height(index)
     width = @inner_dimensions[index][0]
     height = @inner_dimensions[index][1]
-    return width, height
+    return [width, height]
   end
 
   def create_fragment(board, x, y, width, height)

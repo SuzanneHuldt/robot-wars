@@ -21,6 +21,7 @@ class Matcher
   end
 
   def search_fragment(hits)
+    return [], 0 if @fragment_coordinates == []
     @fragment_coordinates.each do |fragment|
       x, y = assign_x_and_y(fragment)
       patterns = KillLibrary.new.all_patterns(x, y)
