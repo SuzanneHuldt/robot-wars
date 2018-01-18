@@ -8,11 +8,11 @@ class RandomMove
     @cell_checker = CellChecker.new(field)
     @matcher = Matcher.new(field)
     @field = field
-    @my_id = my_id    
+    @my_id = my_id
     @op_id = op_id
     @my_cells, @op_cells, @empty_cells = get_cells(@my_id, @op_id)
     @moves = @my_cells.length >= 2 ? %w(birth kill) : %w(kill)
-    @birth_patterns = @birth.birth(field, @cell_checker.get_valid_coordinates)
+    @birth_patterns = @birth.birth(field, @cell_checker.get_valid_coordinates(field))
     @kill_patterns = @matcher.find
     @empty_cells = @empty_cells - @birth_patterns
     @kill_cells = (@op_cells + @my_cells - @kill_patterns).shuffle
@@ -86,4 +86,3 @@ class RandomMove
     cells
   end
 end
-
