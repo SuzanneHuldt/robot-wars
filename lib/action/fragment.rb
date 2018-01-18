@@ -29,8 +29,10 @@ class Fragment
     templates.each do |template|
       owned_cell = false
       owned_cell = set_owned_cell(board, template, owned_cell)
-      fragments << coordinates if owned_cell == false
-      @inner_dimensions << template[1] if owned_cell == false
+      if owned_cell == false
+        fragments << coordinates
+        @inner_dimensions << template[1]
+      end
     end
   end
 
