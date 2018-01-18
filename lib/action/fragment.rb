@@ -73,7 +73,7 @@ class Fragment
     coordinates.each_with_index do |fragment, index|
       x, y = assign_fragment_x_and_y(fragment)
       width, height = assign_width_and_height(index)
-      fragments << build_fragment(board, x, y, width, height)
+      fragments << create_fragment(board, x, y, width, height)
     end
     fragments
   end
@@ -90,15 +90,21 @@ class Fragment
     return width, height
   end
 
-  def build_fragment(board, x, y, width, height)
+  def create_fragment(board, x, y, width, height)
     fragment = []
+    build_fragment(board, fragment, x, y, width, height)
+    fragment
+  end
+
+  def build_row(board, height, row, x, y, w)
+    height.times { |h| row << board[x + w][y + h] }
+  end
+
+  def build_fragment(board, fragment, x, y, width, height)
     width.times do |w|
       row = []
-      height.times do |h|
-        row << board[x + w][y + h]
-      end
+      build_row(board, height, row, x, y, w)
       fragment << row
     end
-    fragment
   end
 end
