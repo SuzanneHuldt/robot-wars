@@ -10,18 +10,42 @@ class Matcher
 
   def find
     hits = []
-    @fragment_coordinates.each do |fragment|
-      x, y = assign_x_and_y(fragment)
-      patterns = KillLibrary.new.all_patterns(x, y)
-      patterns.each do |pattern|
-        check_pattern(pattern, hits)
-        return hits if hits.length == pattern[0].length
-      end
-    end
-    []
+    hits, pattern_length = search_fragment(hits)
+    hits.length == pattern_length ? hits : []
   end
 
   private
+  
+  def find_fragments
+    finder = Fragment.new
+    finder.find(@board)
+  end
+
+  def search_fragment(hits)
+    @fragment_coordinates.each do |fragment|
+      x, y = assign_x_and_y(fragment)
+      patterns = KillLibrary.new.all_patterns(x, y)
+      hits, pattern_length = match_patterns(patterns, hits)
+      return hits, pattern_length if hits.length == pattern_length
+    end
+  end
+
+  def assign_x_and_y(fragment)
+    y = fragment[1] + 1
+    x = fragment[0] + 1
+    while x <= @board[y].length
+      break if @board[y][x] == OPPOSITION_CELL
+      x += 1
+    end
+    return x, y
+  end
+
+  def match_patterns(patterns, hits)
+    patterns.each_with_index do |pattern|
+      check_pattern(pattern, hits)
+      return hits, pattern[0].length if hits.length == pattern[0].length
+    end
+  end
 
   def check_pattern(pattern, hits)
     pattern.each_with_index do |variation, index|
@@ -36,16 +60,6 @@ class Matcher
     end
   end
 
-  def assign_x_and_y(fragment)
-    y = fragment[1] + 1
-    x = fragment[0] + 1
-    while x <= @board[y].length
-      break if @board[y][x] == OPPOSITION_CELL
-      x += 1
-    end
-    return x, y
-  end
-
   def total_alive_cells(fragment)
     counter = 0
       fragment.each_with_index do |row, y|
@@ -54,10 +68,5 @@ class Matcher
         end
       end
     counter
-  end
-
-  def find_fragments
-    finder = Fragment.new
-    finder.find(@board)
   end
 end
