@@ -29,13 +29,18 @@ class Fragment
   def check_for_fragments(board, coordinates, templates, fragments, x, y)
     templates.each do |template|
       owned_cell = false
-      template[0].each do |cell|
-        board[cell[1]] ||= []
-        owned_cell = true if board[cell[1]][cell[0]] != '.'
-      end
+      owned_cell = set_owned_cell(board, template, owned_cell)
       fragments << coordinates if owned_cell == false
       @inner_dimensions << template[1] if owned_cell == false
     end
+  end
+
+  def set_owned_cell(board, template, owned_cell)
+    template[0].each do |cell|
+      board[cell[1]] ||= []
+      owned_cell = true if board[cell[1]][cell[0]] != '.'
+    end
+    return owned_cell
   end
 
   def check_cell_ownership(board, template, owned_cell)
