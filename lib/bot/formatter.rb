@@ -20,3 +20,4 @@ class Formatter
     "#{cell[1]},#{cell[0]}"
   end
 end
+

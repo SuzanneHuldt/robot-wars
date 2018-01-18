@@ -1,5 +1,4 @@
 class Matcher
-
   OPPOSITION_CELL = '1'
   PLAYER_CELL = '0'
 

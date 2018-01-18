@@ -8,29 +8,31 @@ class RandomMove
     @cell_checker = CellChecker.new(field)
     @matcher = Matcher.new(field)
     @field = field
-    @my_id = my_id    
+    @my_id = my_id
     @op_id = op_id
     @my_cells, @op_cells, @empty_cells = get_cells(@my_id, @op_id)
     @moves = @my_cells.length >= 2 ? %w(birth kill) : %w(kill)
-    @birth_patterns = @birth.birth(field, @cell_checker.get_valid_coordinates)
+    @birth_patterns = @birth.birth(field, @cell_checker.get_valid_coordinates(field))
     @kill_patterns = @matcher.find
     @empty_cells = @empty_cells - @birth_patterns
     @kill_cells = (@op_cells + @my_cells - @kill_patterns).shuffle
     generate_move(move_time, timebank)
   end
 
+  private
+
   def generate_move(move_time, timebank)
     random_moves = []
     best_move = ['pass', -200]
     random_moves << ['pass']
-    moves_number = timebank / 4
-    moves_number = 100 if moves_number > 100
-    moves_number.times { random_moves << send(@moves.sample) }
+    number_of_moves = (timebank / 4) > 100 ? 100 : timebank / 4
+    number_of_moves.times { random_moves << send(@moves.sample) }
     random_moves.uniq!
     random_moves.each do |move|
       next_gen = @generator.next_generation(@generator.next_generation(apply_move(move)))
       score = next_gen.flatten.count(@my_id) - next_gen.flatten.count(@op_id)
-      score = 1000 if next_gen.flatten.count(@op_id) <= 2
+      score = -1000 if next_gen.flatten.count(@op_id) < 3
+      score = 1000 if next_gen.flatten.count(@op_id) == 0
       best_move = [move, score] if score > best_move[1]
     end
     best_move[0]

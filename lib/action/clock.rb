@@ -16,3 +16,4 @@ class Clock
     @out = nil
   end
 end
+

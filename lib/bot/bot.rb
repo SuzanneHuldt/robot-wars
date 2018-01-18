@@ -33,3 +33,4 @@ class Bot
     @action.new_action(timebank.to_i, @state.info)
   end
 end
+

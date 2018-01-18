@@ -39,3 +39,4 @@ describe Formatter do
     end    
   end
 end
+

@@ -1,5 +1,4 @@
 class Fragment
-
   def initialize
     @inner_dimensions = []
   end

@@ -47,6 +47,7 @@ Other challenges?
 
 ## Tech Stack
 The technologies used for this project are as follows:
+**Suze edit: no external libraries (eg for machine learning) - only library used is Rspec**
 - Language: Ruby
   - We took the decision to use Ruby both to use a language we were comfortable with, given the type of challenge we were attempting, and to allow us to really push ourselves to the limit in a given language
 - Testing framework: RSpec

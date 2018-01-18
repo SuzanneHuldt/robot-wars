@@ -1,2 +1,0 @@
-describe Bot do
-end
