@@ -4,14 +4,14 @@ class Move
     @birth = BirthPattern.new
   end
 
-  def new_move(my_id, op_id, field, move_time, timebank)
-    load_info(my_id, op_id, field, move_time, timebank)
-    generate_move(move_time, timebank)
+  def new_move(my_id, op_id, field, timebank)
+    load_info(my_id, op_id, field)
+    generate_move(timebank)
   end
 
   private
 
-  def generate_move(move_time, timebank)
+  def generate_move(timebank)
     number_of_moves = (timebank / 4) > 100 ? 100 : timebank / 4
     best_move(get_moves(number_of_moves))
   end
@@ -86,7 +86,7 @@ class Move
     cells
   end
 
-  def load_info(my_id, op_id, field, move_time, timebank)
+  def load_info(my_id, op_id, field)
     @cell_checker = CellChecker.new
     @matcher = Matcher.new(field)
     @field = field
