@@ -14,10 +14,8 @@ class Matcher
       x, y = assign_x_and_y(fragment)
       patterns = KillLibrary.new.all_patterns(x, y)
       patterns.each do |pattern|
-        pattern.each_with_index do |variation, index|
-          check_hit(variation, hits)
-          return hits if hits.length == variation.length && hits.length == total_alive_cells(Fragment.new.get_inner(@board)[index])
-        end
+        check_pattern(pattern, hits)
+        return hits if hits.length == pattern[0].length
       end
     end
     []
@@ -25,49 +23,18 @@ class Matcher
 
   private
 
+  def check_pattern(pattern, hits)
+    pattern.each_with_index do |variation, index|
+      check_hit(variation, hits)
+      return hits if hits.length == variation.length && hits.length == total_alive_cells(Fragment.new.get_inner(@board)[index])
+    end
+  end
+
   def check_hit(variation, hits)
     variation.each do |coordinates|
       hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == OPPOSITION_CELL
     end
   end
-
-  # def check_pattern_presence(patterns, hits)
-  #   patterns.each do |pattern|
-  #     pattern.each_with_index do |variation, index|
-  #       variation.each do |coordinates|
-  #         hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == OPPOSITION_CELL
-  #       end
-  #       return hits if hits.length == variation.length && hits.length == total_alive_cells(Fragment.new.get_inner(@board)[index])
-  #     end
-  #   end
-  # end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   def assign_x_and_y(fragment)
     y = fragment[1] + 1
