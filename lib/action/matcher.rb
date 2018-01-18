@@ -15,9 +15,7 @@ class Matcher
       patterns = KillLibrary.new.all_patterns(x, y)
       patterns.each do |pattern|
         pattern.each_with_index do |variation, index|
-          variation.each do |coordinates|
-            hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == OPPOSITION_CELL
-          end
+          check_hit(variation, hits)
           return hits if hits.length == variation.length && hits.length == total_alive_cells(Fragment.new.get_inner(@board)[index])
         end
       end
@@ -26,6 +24,12 @@ class Matcher
   end
 
   private
+
+  def check_hit(variation, hits)
+    variation.each do |coordinates|
+      hits << [coordinates[1], coordinates[0]] if @board[coordinates[1]][coordinates[0]] == OPPOSITION_CELL
+    end
+  end
 
   # def check_pattern_presence(patterns, hits)
   #   patterns.each do |pattern|
