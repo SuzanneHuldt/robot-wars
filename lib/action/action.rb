@@ -1,11 +1,11 @@
 class Action
   def initialize
-    @random = RandomMove.new
+    @move = Move.new
   end
 
   def new_action(timebank, info)
     update_info(timebank, info)
-    @random.new_move(@my_id, @op_id, @info[:field], @info[:time_per_move], @timebank)
+    @move.new_move(@my_id, @op_id, @info[:field], @info[:time_per_move], @timebank)
   end
 
   private
