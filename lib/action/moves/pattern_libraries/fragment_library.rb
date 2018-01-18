@@ -8,6 +8,8 @@ class FragmentLibrary
     fragments << six_by_six(x,y)
   end
 
+  private
+
   def four_by_four(x, y)
     [[
       [x, y], [x + 1, y], [x + 2, y], [x + 3, y],

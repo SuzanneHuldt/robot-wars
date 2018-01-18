@@ -11,6 +11,8 @@ class KillLibrary
     patterns << loaf(x, y)
   end
 
+  private
+
   def next_gen_square(x, y)
     [
       [[x, y], [x + 1, y], [x, y + 1]],
