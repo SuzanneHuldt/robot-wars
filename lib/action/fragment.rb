@@ -41,7 +41,7 @@ class Fragment
       board[cell[1]] ||= []
       owned_cell = true if board[cell[1]][cell[0]] != '.'
     end
-    return owned_cell
+    owned_cell
   end
 
   def check_cell_ownership(board, template, owned_cell)
