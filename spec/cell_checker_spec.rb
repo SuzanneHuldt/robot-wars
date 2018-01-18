@@ -65,15 +65,6 @@ describe CellChecker do
     end
   end
 
-  describe '#identify_blank_grid_of_4' do
-    xit 'identifys the blank 4x4 grids' do
-      subject.trim_edges(@field)
-      expect(subject.identify_blank_grid_of_4(@field)).to eq([
-        "7,1", "7,2", "12,5", "13,5", "14,5", "10,7", "2,10", "7,10"
-        ])
-    end
-  end
-
   describe '#remove_blank_grid_of_4' do
     it 'removes blank 4x4 grids from grid_coordinates' do
       subject.trim_edges(@field)
@@ -124,4 +115,3 @@ describe CellChecker do
     end
   end
 end
-
