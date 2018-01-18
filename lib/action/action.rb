@@ -5,7 +5,7 @@ class Action
 
   def new_action(timebank, info)
     update_info(timebank, info)
-    @move.new_move(@my_id, @op_id, @info[:field], @info[:time_per_move], @timebank)
+    @move.new_move(@my_id, @op_id, @info[:field], @timebank)
   end
 
   private

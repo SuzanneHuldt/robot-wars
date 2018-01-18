@@ -6,7 +6,7 @@ class Generator
       new_row = []
       row.each_with_index do |cell, y|
         new_row << new_state(cell, neighbours(x,y))
-        end
+      end
       @next_gen << new_row
     end
     @next_gen
