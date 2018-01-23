@@ -4,7 +4,7 @@
 [Demo](#demo) | [Intro](#intro) | [Quickstart](#quickstart) | [Setup](#setup) | [Approach](#approach) | [Challenges](#challenges) | [Tech Stack](#tech-stack)
 
 ## Demo  
-Please find the final presentation and demo that was presented on the 19th January 2018.  
+Here is the final presentation and demo that was presented on the 19th January 2018.  
 https://youtu.be/X7m_-w3S5W8
 
 ## Intro
