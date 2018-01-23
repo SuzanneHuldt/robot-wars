@@ -1,7 +1,11 @@
 # Robot Wars
 ## Francine: Makers Academy Final Project
 
-[Intro](#intro) | [Quickstart](#quickstart) | [Setup](#setup) | [Approach](#approach) | [Challenges](#challenges) | [Tech Stack](#tech-stack)
+[Demo](#demo) | [Intro](#intro) | [Quickstart](#quickstart) | [Setup](#setup) | [Approach](#approach) | [Challenges](#challenges) | [Tech Stack](#tech-stack)
+
+## Demo  
+Please find the final presentation and demo that was presented on the 19th January 2018.  
+https://youtu.be/X7m_-w3S5W8
 
 ## Intro
 Francine is a bot built to play a two-player variant of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), and is our final project at [Makers Academy](http://www.makersacademy.com/).
