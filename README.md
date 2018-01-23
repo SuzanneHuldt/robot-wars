@@ -14,11 +14,11 @@ The choice of project was motivated primarily by the technical challenge involve
 
 ## Quickstart
 
-A basic version of this bot, which plays with solely random moves, is available to download from the [Riddles.io page](**LINK**) for the Game of Life and Death (GOLAD). Alternatively, if you wish to tinker with and improve upon our logic, clone this repo, and the file `action.rb` will provide you with the outputs of each of the bot's different move choices. This logic is encapsulated within `birthpattern.rb`, `cell_checker.rb`, and `matcher.rb`.
+A basic version of this bot, which plays with solely random moves, is available to download from the [Riddles.io page](https://starapple.riddles.io/competitions/game-of-life-and-death/how-to-play) for the Game of Life and Death (GOLAD). Alternatively, if you wish to tinker with and improve upon our logic, clone this repo, and the file `action.rb` will provide you with the outputs of each of the bot's different move choices. This logic is encapsulated within `birthpattern.rb`, `cell_checker.rb`, and `matcher.rb`.
 
 To run the tests, first run `bundle install` from the project root directory, and then run `rspec`.
 
-To play a game **(... CONTINUE THIS HERE)**
+To play a game, you will need to download the game engine from Riddles.io; instructions for this can be found [here](https://starapple.riddles.io/competitions/game-of-life-and-death/how-to-play).
 
 
 
@@ -39,22 +39,16 @@ Whilst Riddles.io provides starter bots in some languages, there was not yet one
 ![MVP  diagram](/readme_images/robot-wars-diagram.jpg)
 
 
-The second stage was to code logic into the bot. One option that we considered was to use a graph **NEEDS MORE HERE TIAGO CAN YOU EXPAND ON THIS PLEASE?** However, we concluded that this approach would take too much development time, and, given that delivery within a <2 week timeframe was a requirement for this project, we elected to take a simpler approach. Instead, the bot would search through the board to identify strong patterns, and look to either build these for its own colony of cells, or destroy those of its opponent. More on patterns within the Game of Life is available [here](http://www.math.cornell.edu/~lipa/mec/lesson6.html). The classes `BirthPattern`, `Matcher`, `Fragment`, and the files in `pattern_libraries` contain the logic for this. Meanwhile, given that time was a consideration in terms of how long our bot was permitted for each move (see [below](#challenges) for more), we also implemented functionality that would allow our bot to skip over areas of the board that it could see, from surrounding cells, would not contain any of these patterns. We also created a system that would allow our bot, from a selection of possible moves, evaluate the board after the next generation of cells, and based on this decide which move would provide the greatest net benefit to itself in terms of the number of cells it controlled on the field.
+The second stage was to code logic into the bot. We identified that certain patterns on the board would be self-sustaining (without external interference), and so represented a strong position on the board for the player that controlled them. More on these patterns is available [here](http://www.math.cornell.edu/~lipa/mec/lesson6.html). The classes `BirthPattern`, `Matcher`, `Fragment`, and the files in `pattern_libraries` contain the logic for this. Meanwhile, given that time was a consideration in terms of how long our bot was permitted for each move (see [below](#challenges) for more), we also implemented functionality that would allow our bot to skip over areas of the board that it could see, from surrounding cells, would not contain any of these patterns. We also created a system that would allow our bot, from a selection of possible moves, evaluate the board after the next generation of cells, and based on this decide which move would provide the greatest net benefit to itself in terms of the number of cells it controlled on the field.
 
 
 ## Challenges
 
-One interesting challenge that this project presented was the time restrictions on making a move that the game imposed a time limit on each move in the game. This led us to take some unfamiliar and intentional design decisions, such as preloading as much data as possible before `action` methods were called, and sacrificing some object-orientation in order to improve the speed of the program. **(EXPLAIN THIS BETTER WITH CONCRETE EXAMPLES)**
+One interesting challenge that this project presented was the time restrictions on making a move that the game imposed a time limit on each move in the game. This led us to take some unfamiliar and intentional design decisions, such as preloading as much data as possible before `action` methods were called, and sacrificing some object-orientation in order to improve the speed of the program. Another challenge that we had to contend with was getting used to using IO in Ruby and, specifically, ensuring a synchronous stream to ensure continuous communication with the game engine, rather than Ruby's default, asynchronous IO stream.
 
-Other challenges?
+From a more human perspective, we also faced the challenge of working as a group of people each of whom have very different working styles. In order to ensure that this did not lead to breakdowns in work on the project, we made sure that, as a team, we were in constant communication so that each person was always aware of what everyone else was working on. This meant that those who preferred working or researching individually could do so, whilst those who worked better whilst pairing were also able to work in their preferred manner. 
 
 
 ## Tech Stack
-The technologies used for this project are as follows:
-**Suze edit: no external libraries (eg for machine learning) - only library used is Rspec**
-- Language: Ruby
-  - We took the decision to use Ruby both to use a language we were comfortable with, given the type of challenge we were attempting, and to allow us to really push ourselves to the limit in a given language
-- Testing framework: RSpec
-  - We used RSpec as our testing framework as it is a full-featured testing framework for Ruby with which we were all familiar; as with our decision to use Ruby, here we sought to minimise complexities with the project to allow us to focus fully on creating a bot that could play GOLAD as well as possible
-- API: Riddles.io game engine
-  - We used the [API provided by Riddles.io](**LINK**) to connect to their website, allowing our bot to actually play the game
+
+We took an intentional decision early on to build this project from scratch, without the help of external machine learning libraries. In order to allow us to put maximum focus on this, we chose to use **Ruby** as a language we were familiar with, alongside the **RSpec** testing framework.

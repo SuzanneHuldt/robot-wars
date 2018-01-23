@@ -29,8 +29,10 @@ class Fragment
     templates.each do |template|
       owned_cell = false
       owned_cell = set_owned_cell(board, template, owned_cell)
-      fragments << coordinates if owned_cell == false
-      @inner_dimensions << template[1] if owned_cell == false
+      if owned_cell == false
+        fragments << coordinates
+        @inner_dimensions << template[1]
+      end
     end
   end
 
@@ -39,7 +41,7 @@ class Fragment
       board[cell[1]] ||= []
       owned_cell = true if board[cell[1]][cell[0]] != '.'
     end
-    return owned_cell
+    owned_cell
   end
 
   def check_cell_ownership(board, template, owned_cell)
